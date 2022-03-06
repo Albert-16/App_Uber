@@ -1,12 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, ImageBackground  } from 'react-native';
-import img from '/App-Uber/App_Uber/assets/carro.png';
+import img from './assets/carro.png';
+import { StatusBar } from 'expo-status-bar';
+
 
 export default function Vehiculo (){
   return(
   <View style={styles.container}>
+    <ImageBackground source={img} resizeMode="cover" style={styles.image}>
+    <StatusBar style="light" />
     <View>
-      < Text style={styles.Texto}>Registrar Vehiculo</ Text>
+      < Text style={styles.Texto}>Registrar Vehículo</ Text>
     </View>
 
     <View style={styles.containerContenido}>
@@ -39,15 +43,16 @@ export default function Vehiculo (){
       </View>
 
       <View style={styles.botones}>
-      <TouchableOpacity style={styles.button} onPress={() => Alert.alert("Registro Éxitoso","Registro Guardado Correctamente")}>
-          <Text style={styles.buttonText}>Registrar</Text>
+      <TouchableOpacity style={styles.button} onPress={() => Alert.alert("Registro Exitoso","Registro Guardado Correctamente")}>
+          <Text style={styles.buttonText} >Registrar</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => Alert.alert("Registro Cancelado","Se ha cancelado tu registro")}>
           <Text style={styles.buttonText}>Cancelar</Text>
         </TouchableOpacity>
       </View>
+      
     </View>
-
+    </ImageBackground>
   </View>
     //Finalizacion de Container
   )};
@@ -63,7 +68,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   containerContenido: {
-    backgroundColor: '#12191D',
+    
     width: "80%",
     height: "80%",
     padding: 0,
@@ -81,13 +86,14 @@ const styles = StyleSheet.create({
   Texto: {
     color: "#FFF",
     fontWeight: "bold",
+    textAlign:"center",
+    padding:20,
     fontSize: 30,
   },
   TextoSecundario: {
     color: "#FFF",
     fontSize: 16,
   },
-
   input: {
     height: 40,
     margin: 12,
@@ -101,22 +107,27 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  ModalDropdown:{
-    width: "100%",
-    height:40,
-    backgroundColor:"#FFF",
-    fontSize:25,
-    borderRadius:10,
-    padding:10,
-    marginBottom: 15,
-    marginTop:20
-  },
   button:{
     width:"40%",
     backgroundColor:"#2196F3",
     padding:15,
+    color:"#FFFFFF",
     borderRadius:10,
     margin:20,
     alignItems:'center',
+  },
+  image:{
+    flex:1,
+    padding:10,
+  },
+  buttonText:{
+    color:"#FFFFFF",
+  },
+  line:{
+    height: 1,
+    width: '100%',
+    backgroundColor: "#FFF",
+    marginVertical: 10
   }
+
 });
