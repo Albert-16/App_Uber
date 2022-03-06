@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { View, Text, Image, TextInput, Touchable } from "react-native";
+import { View, Text, Image, TextInput, Touchable,ScrollView } from "react-native";
 import Constants from "expo-constants";
 
 
@@ -18,11 +18,20 @@ export const Colors = {
 
 const { color1, color2, color3, color4, color5, color6 ,color7} = Colors;
 
+export const StyledScroll = styled.ScrollView`
+    background-color:${color1};
+`;
+
 export const StyledContainer = styled.View`
     flex: 1;
     padding: 25px;
     padding-top: ${StatusBarHeight + 10}px;
     background-color: ${color1};
+`;
+
+export const StyleScrollView = styled.ScrollView`
+    background-color: ${color6};
+    margin-horizontal:20px;
 `;
 
 export const InnerContainer = styled.View`

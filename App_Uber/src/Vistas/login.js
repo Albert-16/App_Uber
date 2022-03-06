@@ -120,12 +120,10 @@ const login = () => {
                             <Line />
 
                             <ExtraView>
-                                <ExtraText>
-                                    ¿Olvido su contraseña?
+                                <ExtraText>¿Olvido su contraseña?</ExtraText>
                                     <TextLink>
                                         <TextLinkContent>Recuperar Contraseña</TextLinkContent>
                                     </TextLink>
-                                </ExtraText>
                             </ExtraView>
                         </StyledFormArea>
                     )}

@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Login from './src/Vistas/login';
-
+import RegistrarUsuario from "./src/Vistas/RegistrarUsuer";
 export default function App() {
-  return (<Login/>);
+  return (<RegistrarUsuario />);
 }
 
 const styles = StyleSheet.create({
