@@ -1,7 +1,6 @@
 import React from 'react';
-import { Text, View, StyleSheet, ImageBackground,  Alert,  TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, ImageBackground, Alert, TouchableOpacity, Platform, TextInput } from 'react-native';
 import img from '/APP_UBER/App_Uber/assets/background.jpg';
-
 const Viajes = () => {
   return <View style={styles.container}>
     <ImageBackground source={img} resizeMode="cover" style={styles.image}>
@@ -9,40 +8,34 @@ const Viajes = () => {
 
       <View style={styles.backgroundContet}>
         <Text style={styles.parametros}>Vehiculo</Text>
+        <TextInput style={styles.textInput} placeholder="Introduzca el Vehiculo"/>
 
         <Text style={styles.parametros}>Conductor</Text>
+        <TextInput style={styles.textInput} placeholder="Introduzca el Conductor"/>
 
-        <Text style={styles.parametros}>Pasajero</Text>
-
-        <Text style={styles.parametros}>Latitud Inicial</Text>
-
-        <Text style={styles.parametros}>Longitud Inicial</Text>
-
-        <Text style={styles.parametros}>Latitud Final</Text>
-
-        <Text style={styles.parametros}>Longitud Final</Text>
+        <Text style={styles.parametros}>Pasajero </Text>
+        <TextInput style={styles.textInput} placeholder="Introduzca el Pasajero" />
 
         <Text style={styles.parametros}>Fecha Inicial</Text>
+        <TextInput style={styles.textInput} placeholder="Introduzca la fecha de inicio"/>
 
         <Text style={styles.parametros}>Fecha Final</Text>
+        <TextInput style={styles.textInput} placeholder="Introduzca la fecha final"/>
 
-        <Text style={styles.parametros}>Dirección Inicial</Text>
-
-        <Text style={styles.parametros}>Dirección Final</Text>
-
-        <Text style={styles.parametros}>Estado</Text>
 
         <TouchableOpacity style={styles.button} onPress={() => Alert.alert("Registro Guardado Correctamente")}>
           <Text style={styles.buttonText}>REGISTRAR</Text>
         </TouchableOpacity>
+
       </View>
+
     </ImageBackground>
   </View>
 };
 
 
 const styles = StyleSheet.create({
-  container: { flex: 1 , fontFamily:'Inter_900Black'},
+  container: { flex: 1, fontFamily: 'Inter_900Black' },
   image: {
     flex: 1,
     padding: 10,
@@ -58,7 +51,7 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   parametros: {
-    color: '#fff',
+    color: '#0D64C1',
     fontSize: 15,
     fontWeight: "bold",
   },
@@ -68,8 +61,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
   },
-  button:{
-    backgroundColor: '#0072E9',padding:10, borderRadius:10,margin:5
-  }
+
+  button: {
+    backgroundColor: '#0072E9', padding: 10, borderRadius: 15, marginTop: 15,
+  },
+
+  textInput: {
+    color: '#fff', backgroundColor: '#454545', padding: 10, borderRadius: 5 , borderColor: '#FFFF',borderWidth:1, marginBottom:5,marginTop:5,
+  },
 });
 export default Viajes;
