@@ -18,7 +18,7 @@ const Modelos = () => {
         <TouchableOpacity style={styles.button} onPress={() => Alert.alert("Registro Guardado Correctamente")}>
           <Text style={styles.buttonText}>REGISTRAR</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonCancelar} onPress={() => Alert.alert("Registro Guardado Correctamente")}>
+        <TouchableOpacity style={styles.buttonCancelar} onPress={() => Alert.alert("Proceso Cancelado Correctamente")}>
           <Text style={styles.buttonText}>CANCELAR</Text>
         </TouchableOpacity>
       </View>
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   backgroundContet: {
-    backgroundColor: "#fff2", justifyContent: "center", padding: 10,
+    backgroundColor: "#fff2", justifyContent: "center", padding: 10,borderRadius:15,
   },
   title: {
     color: "white",
