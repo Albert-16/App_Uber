@@ -46,7 +46,7 @@ const login = () => {
                     onSubmit={async (values) => {
                         try {
                             // console.log(values);
-                            const respuesta = await fetch('http://192.168.100.9:4005/uber/user/login', {
+                            const respuesta = await fetch('http://192.168.90.86:4005/uber/user/login', {
                                 method: 'POST',
                                 headers: {
                                     Accept: 'application/json',
@@ -57,6 +57,7 @@ const login = () => {
                                     contrasenia: values.contrasenia
                                 })
                             });
+                            
                             const json = await respuesta.json();
                             const data = json.Información;
                             if(!data.token){
