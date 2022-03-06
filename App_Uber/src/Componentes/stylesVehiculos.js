@@ -3,7 +3,8 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, ImageBackground } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import styled from 'styled-components';
-import Constants from 'expo-constants'
+import Constants from 'expo-constants';
+
 
 //Paleta de colores
 export const Colors = {
@@ -11,7 +12,7 @@ export const Colors = {
     segundo: '#1C262D',
     tercero: '#26363E',
     cuarto: '#7C98A9',
-    blanco: '#F4F4F4',
+    blanco: '#FFFFFF',
     azulGod: '#0072E9'
 };
 const { negro, segundo, tercero, cuarto, blanco, azulGod } = Colors;
@@ -29,65 +30,73 @@ export const Contenedor = styled.View`
     padding: 5px;
 `;
 
-export const containerContenido = styled.View`
-width: "80%",
-height: "80%",
-padding: 0,
-margin: 25,
+export const ContainerContenido = styled.View`
+width: 80%;
+height: 80%;
+padding: 0px;
+margin: 25px;
 `;
-export const containerContenido2 = styled.View`
-alignItems: 'center',
-marginTop: 10,
+export const ContainerContenido2 = styled.View`
+align-items: center;
+margin-top: 10px;
 `;
 
 //Botones
 export const Viewbotones = styled.View`
-display:'flex',
-flexDirection:'row',
-alignSelf:'center'
+display:flex;
+flex-direction:row;
+align-self:center;
 `;
-export const button = styled.TouchableOpacity`
-width:"40%",
-backgroundColor:${azulGod},
-padding:15,
-color:${blanco},
-borderRadius:10,
-margin:20,
-alignItems:'center',
+export const Button = styled.TouchableOpacity`
+width:40%;
+background-color:${azulGod};
+padding:15px;
+color:${blanco};
+borderRadius:10px;
+margin:20px;
+align-items:center;
 `;
-export const buttonText = styled.Text`
-color:${blanco},
+export const ButtonText = styled.Text`
+color:${blanco};
 `;
 
 //Texto
 export const Texto = styled.Text`
-color: ${blanco},
-fontWeight: "bold",
-textAlign:"center",
-padding:20,
-fontSize: 30,
+color: ${blanco};
+font-weight: bold;
+text-align:center;
+padding: 20px;
+fontSize: 30px;
 `;
+
 export const TextoSecundario = styled.Text`
-color: ${blanco},
-fontSize: 16,
+color: ${blanco};
+fontSize: 16px;
 `;
 
 //Elements
 export const Myinput = styled.TextInput`
-height: 40,
-margin: 12,
-borderWidth: 1,
-padding: 10,
-width: "100%",
-backgroundColor: ${blanco},
-borderRadius: 10,
+height: 40px;
+margin: 12px;
+borderWidth: 1px;
+padding: 10px;
+width: 100%;
+background-color: ${blanco};
+borderRadius: 10px;
 `;
-export const line = style.View`
-height: 1,
-width: '100%',
-backgroundColor: ${blanco},
-marginVertical: 10
+export const Line = styled.View`
+height: 1px;
+width: 100%;
+background-color: ${blanco};
+margin-vertical: 10px;
 `;
 
+export const Caja = styled.View`
+
+`
+export const Image = styled.ImageBackground`
+flex: 1;
+justifyContent: center;
+`
  
 

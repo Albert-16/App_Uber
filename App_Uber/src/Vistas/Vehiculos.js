@@ -3,21 +3,63 @@ import React from "react";
 //importamos todos nuestros componentes
 import {
     Contenedor,
-    containerContenido,
-    containerContenido2,
+    ContainerContenido,
+    ContainerContenido2,
     Viewbotones,
-    button,
-    buttonText,
+    Button,
+    ButtonText,
     Texto,
     TextoSecundario,
     Myinput,
-    line,
-    Imagefondo
-} from './../componentes/stylesVehiculos';
+    Line,
+    Image,
+    Caja
+} from '../componentes/stylesVehiculos';
 
 const Vehiculo = () => {
     return (
-       <Contenedor></Contenedor>
+        <Contenedor>
+            <Image resizeMode="cover" source={require('../../assets/carro.png')}>
+                <Caja>
+                    <Texto>Registrar Vehículo</Texto>
+                </Caja>
+                <ContainerContenido>
+                    <TextoSecundario>Marca</TextoSecundario>
+                    <ContainerContenido2>
+                        <Myinput placeholder="Marca del vehículo" />
+                    </ContainerContenido2>
+
+                    <TextoSecundario>Modelo</TextoSecundario>
+                    <ContainerContenido2>
+                        <Myinput placeholder="Modelo del vehículo" />
+                    </ContainerContenido2>
+
+                    <TextoSecundario>Placa</TextoSecundario>
+                    <ContainerContenido2>
+                        <Myinput placeholder="Placa del vehículo" />
+                    </ContainerContenido2>
+
+                    <TextoSecundario>Año </TextoSecundario>
+                    <ContainerContenido2>
+                        <Myinput placeholder="Año del vehículo" />
+                    </ContainerContenido2>
+
+                    <TextoSecundario>Color</TextoSecundario>
+                    <ContainerContenido2>
+                        <Myinput placeholder="Color del vehículo" />
+                    </ContainerContenido2>
+                    <Viewbotones>
+                        <Button>
+                            <ButtonText>Registrar</ButtonText>
+                        </Button>
+                        <Button>
+                            <ButtonText>Cancelar</ButtonText>
+                        </Button>
+                    </Viewbotones>
+                    <Line></Line>
+                </ContainerContenido>
+            </Image>
+        </Contenedor>
     );
 }
 export default Vehiculo;
