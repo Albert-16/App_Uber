@@ -1,4 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
+import React from "react";
+import Vehiculos from "./src/Vistas/Vehiculos";
 import { StyleSheet, Text, View } from 'react-native';
 import Login from './src/Vistas/login';
 import RegistrarUsuario from "./src/Vistas/RegistrarUsuer";
@@ -6,12 +7,3 @@ import Menu from "./src/Vistas/Menu";
 export default function App() {
   return (<RegistrarUsuario />);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
