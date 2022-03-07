@@ -86,9 +86,10 @@ const RegistrarUsuario = ({navigation}) => {
                                 console.log("Mensaje: ", json.Mensaje);
                                 Alert.alert("Aviso", json.Mensaje);
                                 
-                                if(json.Mensaje == "Usuario Registrado")
+                                if(json.Titulo == "Usuario Registrado")
                                 {
                                     navigation.navigate("Login");
+                                    console.log("---");
                                 }
                                 else
                                 {
