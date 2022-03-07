@@ -27,7 +27,7 @@ import {
     TextLink,
     TextLinkContent,
     StyledScroll
-} from '../componentes/style';
+} from '../Componentes/style';
 
 const { color2, color6, color5 } = Colors;
 

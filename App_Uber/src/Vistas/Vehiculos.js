@@ -14,7 +14,7 @@ import {
     Line,
     Image,
     Caja
-} from '../componentes/stylesVehiculos';
+} from '../Componentes/stylesVehiculos';
 
 const Vehiculo = () => {
     return (

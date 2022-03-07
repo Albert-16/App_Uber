@@ -14,7 +14,7 @@ import {
     MenuContainer,
     Avatar,
     MenuImagen
-} from '../componentes/style';
+} from '../Componentes/style';
 
 
 
