@@ -78,7 +78,15 @@ const RestablecerContraseña = ({ navigation }) => {
                                 }
                                 */
                                 //console.log(data.token);
-                                navigation.navigate("Login");
+                                if(json.Titulo == "Restablecer Contraseña")
+                                {
+                                    navigation.navigate("Login");
+                                }
+                                else
+                                {
+                                    console.log("Error");
+                                }
+                                
                                 console.log("Mensaje: ", json.Mensaje);
                                 Alert.alert("Aviso", json.Mensaje);
 
