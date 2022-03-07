@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, ImageBackground, Alert, TouchableOpacity, TextInput } from 'react-native';
-import img from '/APLICACION-UBER/App_Uber/assets/background.jpg';
+import img from '../../assets/background.jpg';
 
 const Ciudades = () => {
   return <View style={styles.container}>
@@ -12,7 +12,7 @@ const Ciudades = () => {
         <Text style={styles.parametros}>Ciudad:</Text>
         <TextInput style={styles.textInput} placeholder="Introduzca una ciudad" />
 
-        <TouchableOpacity style={styles.button} onPress={() => Alert.alert("Registro Guardado Correctamente")}>
+        <TouchableOpacity style={styles.buttonRegistrar} onPress={() => Alert.alert("Registro Guardado Correctamente")}>
           <Text style={styles.buttonText}>REGISTRAR</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonCancelar} onPress={() => Alert.alert("Proceso Cancelado Correctamente")}>
