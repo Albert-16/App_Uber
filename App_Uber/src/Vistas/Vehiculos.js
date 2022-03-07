@@ -21,7 +21,7 @@ const Vehiculo = () => {
         <Contenedor>
             <Image resizeMode="cover" source={require('../../assets/carro.png')}>
                 <Caja>
-                    <Texto>Registrar Vehículo</Texto>
+                    <Texto>Registrar Vehículo </Texto>
                 </Caja>
                 <ContainerContenido>
                     <TextoSecundario>Marca</TextoSecundario>
