@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, ImageBackground, Alert, TouchableOpacity, Platform, TextInput } from 'react-native';
-import img from '/APP_UBER/App_Uber/assets/background.jpg';
+import img from '../../assets/background.jpg';
 
 const Modelos = () => {
   return <View style={styles.container}>
