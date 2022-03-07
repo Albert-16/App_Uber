@@ -33,7 +33,7 @@ const { color2, color6, color5 } = Colors;
 
 const { IP, NEWUSER, PORT } = InfoApi;
 
-const RegistrarUsuario = () => {
+const RegistrarUsuario = ({navigation}) => {
     const [hidePassword, setHidePassword] = useState(true);
     const [hidePassword2, setHidePassword2] = useState(true);
     const Ruta = "http://" + IP + ":" + PORT + NEWUSER;
@@ -204,14 +204,14 @@ const RegistrarUsuario = () => {
                                     <ButtonText>Registrar</ButtonText>
                                 </StyledButton>
                                 <Line />
-                                <StyledButton btn2={true} onPress={presInicio}>
+                                <StyledButton btn2={true} onPress={() => navigation.navigate("Login")}>
                                     <ButtonText btn2={true} >Cancelar</ButtonText>
                                 </StyledButton>
                                 <Line />
                                 <ExtraView>
                                     <ExtraText>
                                         ¿Tienes una Cuenta?   </ExtraText>
-                                    <TextLink>
+                                    <TextLink onPress={() => navigation.navigate("Login")}>
                                         <TextLinkContent>Login</TextLinkContent>
                                     </TextLink>
 
