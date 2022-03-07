@@ -7,6 +7,10 @@ import Viajes from './src/Componentes/viewViajes';
 import Marcas from './src/Componentes/viewMarcas';
 import Modelos from './src/Componentes/viewModelos';
 import Menu from "./src/Vistas/Menu";
+import Ciudades from './src/Componentes/viewCiudades.js'
+
 export default function App() {
-  return (<RegistrarUsuario />);
+  return (<Login />);
 }
+
+
