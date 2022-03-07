@@ -13,32 +13,43 @@ import {
     Line,
     MenuContainer,
     Avatar,
-    MenuImagen
+    MenuImagen,
+    StyleScrollView
 } from '../Componentes/style';
 
 
 
-const Menu = () => {
+const Menu = ({ navigation }) => {
 
     return (
+      
         <StyledContainer>
             <StatusBar style="light" />
+           
             <InnerContainer>
             <MenuImagen resizeMode="cover" source={require('../../assets/img/uber3.jpeg')} />
+            
                 <MenuContainer>
+               
                     <StyledFormArea>
+                       
                         <PageTitulo Menu={true}>Uber</PageTitulo>
                         <Subtitle Menu={true}>Bienvenido</Subtitle>
                         <Avatar resizeMode="cover" source={require('../../assets/img/Logo.png')} />
                         <Line />
-                        <StyledButton onPress={() => { }}>
+                        <StyledButton onPress={() => { navigation.navigate("Menú Principal") }}>
                             <ButtonText>Menú</ButtonText>
                         </StyledButton>
                         <Line />
+                       
                     </StyledFormArea>
+                  
                 </MenuContainer>
+               
             </InnerContainer>
+           
         </StyledContainer>
+        
     );
 };
 

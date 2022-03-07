@@ -31,14 +31,14 @@ import {
 
 const { color2, color6, color5 } = Colors;
 
-const { IP, LOGIN, PORT } = InfoApi;
+const { IP, RECUPERARCONTRA, PORT } = InfoApi;
 
 
 
-const Login = ({ navigation }) => {
+const RecuperarCuenta = ({ navigation }) => {
 
     const [hidePassword, setHidePassword] = useState(true);
-    const Ruta = "http://" + IP + ":" + PORT + LOGIN;
+    const Ruta = "http://" + IP + ":" + PORT + RECUPERARCONTRA;
     return (
         <StyledScroll>
             <StyledContainer>
@@ -46,10 +46,10 @@ const Login = ({ navigation }) => {
                 <InnerContainer>
                     <PageLogo resizeMode="cover" source={require('../../assets/img/Logo.png')} />
                     <PageTitulo>Sistema de Uber</PageTitulo>
-                    <Subtitle>Iniciar Sesión</Subtitle>
+                    <Subtitle>Recuperar Cuenta</Subtitle>
 
                     <Formik
-                        initialValues={{ login: '', contrasenia: '' }}
+                        initialValues={{ correo :'' }}
                         onSubmit={async (values) => {
                             try {
                                 // console.log(values);
@@ -59,24 +59,20 @@ const Login = ({ navigation }) => {
                                         Accept: 'application/json',
                                         'Content-Type': 'application/json'
                                     },
-                                    body: JSON.stringify({
-                                        login: values.login,
-                                        contrasenia: values.contrasenia
-                                    })
+                                    body: JSON.stringify(values)
                                 });
 
                                 const json = await respuesta.json();
                                 const data = json.Información;
-                                if (!data.token) {
-                                    console.log(data);
+                                
+                                if (json.Titulo == "Envió Exitoso") {
+                                    navigation.navigate("Restablecer Contraseña");
                                 }
                                 else {
-                                    const token = data.token;
-                                    await AsyncStorage.setItem('token', token);
-                                    const token2 = await AsyncStorage.getItem('token');
-                                    console.log("Token:", token2);
-                                    navigation.navigate("Inicio");
+                                console.log("Error");
+                                    
                                 }
+                                
                                 //console.log(data.token);
                                 
                                 console.log("Mensaje: ", json.Mensaje);
@@ -92,47 +88,26 @@ const Login = ({ navigation }) => {
                         {({ handleChange, handleBlur, handleSubmit, values }) => (
                             <StyledFormArea>
                                 <MyTextInput
-                                    label="Usuario o Correo Electrónico"
-                                    icon="person"
+                                    label="Correo Electrónico"
+                                    icon="mail"
                                     placeholder="Example@gmail.com"
                                     placeholderTextColor={color5}
-                                    onChangeText={handleChange('login')}
-                                    onBlur={handleBlur('login')}
-                                    values={values.login}
+                                    onChangeText={handleChange('correo')}
+                                    onBlur={handleBlur('correo')}
+                                    values={values.correo}
 
                                 />
 
-                                <MyTextInput
-                                    label="Contraseña"
-                                    icon="lock"
-                                    placeholder="Ingrese su contraseña"
-                                    placeholderTextColor={color5}
-                                    onChangeText={handleChange('contrasenia')}
-                                    onBlur={handleBlur('contrasenia')}
-                                    values={values.contrasenia}
-                                    secureTextEntry={hidePassword}
-                                    isPassword={true}
-                                    hidePassword={hidePassword}
-                                    setHidePassword={setHidePassword}
+                            
 
-                                />
-
-                                <MsgBox>...</MsgBox>
+                                <Line />
                                 <StyledButton onPress={handleSubmit}>
                                     <ButtonText>Aceptar</ButtonText>
                                 </StyledButton>
                                 <Line />
-                                <StyledButton btn2={true} onPress={() => navigation.navigate("Registro Usuario")}>
-                                    <ButtonText btn2={true} >Registrarse</ButtonText>
-                                </StyledButton>
-                                <Line />
+                               
 
-                                <ExtraView>
-                                    <ExtraText>¿Olvido su contraseña? </ExtraText>
-                                    <TextLink onPress={() => navigation.navigate("Recuperar Cuenta")}>
-                                        <TextLinkContent>Recuperar Contraseña</TextLinkContent>
-                                    </TextLink>
-                                </ExtraView>
+                                
                             </StyledFormArea>
                         )}
                     </Formik>
@@ -161,4 +136,4 @@ const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, .
 
 
 
-export default Login;
+export default RecuperarCuenta;

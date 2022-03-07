@@ -2,18 +2,18 @@ import React from 'react';
 import { Text, View, StyleSheet, ImageBackground, Alert, TouchableOpacity, Platform, TextInput } from 'react-native';
 import img from '../../assets/background.jpg';
 
-const Modelos = () => {
+const Marcas = () => {
   return <View style={styles.container}>
     <ImageBackground source={img} resizeMode="cover" style={styles.image}>
-      <Text style={styles.title}>REGISTRO MODELO</Text>
+      <Text style={styles.title}>REGISTRO MARCAS</Text>
 
       <View style={styles.backgroundContet}>
 
-        <Text style={styles.parametros}>Modelo:</Text>
-        <TextInput style={styles.textInput} placeholder="Introduzca el modelo" />
-
-        <Text style={styles.parametros}>Marca:</Text>
+        <Text style={styles.parametros}>Marca</Text>
         <TextInput style={styles.textInput} placeholder="Introduzca una Marca" />
+
+        <Text style={styles.parametros}>Estado</Text>
+        <TextInput style={styles.textInput} placeholder="Introduzca el estado de la Marca" />
 
         <TouchableOpacity style={styles.button} onPress={() => Alert.alert("Registro Guardado Correctamente")}>
           <Text style={styles.buttonText}>REGISTRAR</Text>
@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     lineHeight: 84,
     fontWeight: "bold",
-    textAlign: "center"
+    textAlign: "center",
+    padding: 45,
   },
   parametros: {
     color: '#0D64C1',
@@ -66,4 +67,4 @@ const styles = StyleSheet.create({
     color: '#fff', backgroundColor: '#454545', padding: 10, borderRadius: 5 , borderColor: '#FFFF',borderWidth:1, marginBottom:5,marginTop:5,
   },
 });
-export default Modelos;
+export default Marcas;

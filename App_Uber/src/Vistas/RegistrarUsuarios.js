@@ -88,7 +88,7 @@ const RegistrarUsuario = ({navigation}) => {
                                 
                                 if(json.Mensaje == "Usuario Registrado")
                                 {
-                                    console.log("titulo", json.Mensaje);
+                                    navigation.navigate("Login");
                                 }
                                 else
                                 {

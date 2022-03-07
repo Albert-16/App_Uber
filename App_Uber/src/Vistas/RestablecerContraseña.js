@@ -31,14 +31,15 @@ import {
 
 const { color2, color6, color5 } = Colors;
 
-const { IP, LOGIN, PORT } = InfoApi;
+const { IP, RESTABLECERCONTRA, PORT } = InfoApi;
 
 
 
-const Login = ({ navigation }) => {
+const RestablecerContraseña = ({ navigation }) => {
 
     const [hidePassword, setHidePassword] = useState(true);
-    const Ruta = "http://" + IP + ":" + PORT + LOGIN;
+    const [hidePassword2, setHidePassword2] = useState(true);
+    const Ruta = "http://" + IP + ":" + PORT + RESTABLECERCONTRA;
     return (
         <StyledScroll>
             <StyledContainer>
@@ -49,7 +50,7 @@ const Login = ({ navigation }) => {
                     <Subtitle>Iniciar Sesión</Subtitle>
 
                     <Formik
-                        initialValues={{ login: '', contrasenia: '' }}
+                        initialValues={{ pin: '', contrasenia: '',confirmarContrasenia:'' }}
                         onSubmit={async (values) => {
                             try {
                                 // console.log(values);
@@ -59,14 +60,12 @@ const Login = ({ navigation }) => {
                                         Accept: 'application/json',
                                         'Content-Type': 'application/json'
                                     },
-                                    body: JSON.stringify({
-                                        login: values.login,
-                                        contrasenia: values.contrasenia
-                                    })
+                                    body: JSON.stringify(values)
                                 });
 
                                 const json = await respuesta.json();
                                 const data = json.Información;
+                                /*
                                 if (!data.token) {
                                     console.log(data);
                                 }
@@ -75,10 +74,11 @@ const Login = ({ navigation }) => {
                                     await AsyncStorage.setItem('token', token);
                                     const token2 = await AsyncStorage.getItem('token');
                                     console.log("Token:", token2);
-                                    navigation.navigate("Inicio");
+                                    navigation.navigate("Bienvenida");
                                 }
+                                */
                                 //console.log(data.token);
-                                
+                                navigation.navigate("Login");
                                 console.log("Mensaje: ", json.Mensaje);
                                 Alert.alert("Aviso", json.Mensaje);
 
@@ -92,13 +92,13 @@ const Login = ({ navigation }) => {
                         {({ handleChange, handleBlur, handleSubmit, values }) => (
                             <StyledFormArea>
                                 <MyTextInput
-                                    label="Usuario o Correo Electrónico"
+                                    label="Pin de Recuperacion"
                                     icon="person"
-                                    placeholder="Example@gmail.com"
+                                    placeholder="Ingrese su pin"
                                     placeholderTextColor={color5}
-                                    onChangeText={handleChange('login')}
-                                    onBlur={handleBlur('login')}
-                                    values={values.login}
+                                    onChangeText={handleChange('pin')}
+                                    onBlur={handleBlur('pin')}
+                                    values={values.pin}
 
                                 />
 
@@ -117,20 +117,31 @@ const Login = ({ navigation }) => {
 
                                 />
 
+                                <MyTextInput
+                                    label="Confirmar Contraseña"
+                                    icon="lock"
+                                    placeholder="Ingrese su contraseña"
+                                    placeholderTextColor={color5}
+                                    onChangeText={handleChange('confirmarContrasenia')}
+                                    onBlur={handleBlur('confirmarContrasenia')}
+                                    values={values.confirmarContrasenia}
+                                    secureTextEntry={hidePassword2}
+                                    isPassword={true}
+                                    hidePassword={hidePassword2}
+                                    setHidePassword={setHidePassword2}
+
+                                />
+
                                 <MsgBox>...</MsgBox>
                                 <StyledButton onPress={handleSubmit}>
                                     <ButtonText>Aceptar</ButtonText>
                                 </StyledButton>
                                 <Line />
-                                <StyledButton btn2={true} onPress={() => navigation.navigate("Registro Usuario")}>
-                                    <ButtonText btn2={true} >Registrarse</ButtonText>
-                                </StyledButton>
-                                <Line />
+                             
 
                                 <ExtraView>
-                                    <ExtraText>¿Olvido su contraseña? </ExtraText>
-                                    <TextLink onPress={() => navigation.navigate("Recuperar Cuenta")}>
-                                        <TextLinkContent>Recuperar Contraseña</TextLinkContent>
+                                    <TextLink onPress={() => navigation.navigate("Login")}>
+                                        <TextLinkContent>Iniciar Sesión</TextLinkContent>
                                     </TextLink>
                                 </ExtraView>
                             </StyledFormArea>
@@ -161,4 +172,4 @@ const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, .
 
 
 
-export default Login;
+export default RestablecerContraseña;

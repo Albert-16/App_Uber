@@ -65,8 +65,9 @@ export const Texto = styled.Text`
 color: ${blanco};
 font-weight: bold;
 text-align:center;
-padding: 20px;
-fontSize: 30px;
+padding: 40px;
+margin-top: 45px;
+fontSize: 20px;
 `;
 
 export const TextoSecundario = styled.Text`
@@ -92,7 +93,7 @@ margin-vertical: 10px;
 `;
 
 export const Caja = styled.View`
-
+ 
 `
 export const Image = styled.ImageBackground`
 flex: 1;
