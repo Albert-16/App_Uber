@@ -4,6 +4,7 @@ import { Octicons, Ionicons } from '@expo/vector-icons';
 import { Formik } from 'formik';
 import { Alert, SectionList, View } from 'react-native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { InfoApi } from "../Configuracion/configuracion";
 
 import {
     StyledContainer,
@@ -30,12 +31,19 @@ import {
 
 const { color2, color6, color5 } = Colors;
 
+const { IP, NEWUSER, PORT } = InfoApi;
+
 const RegistrarUsuario = () => {
     const [hidePassword, setHidePassword] = useState(true);
+    const [hidePassword2, setHidePassword2] = useState(true);
+    const Ruta = "http://" + IP + ":" + PORT + NEWUSER;
+    const presInicio = async () => {
+        Alert.alert("Uber", "Hola");
+    }
     return (
-   
+        <StyledScroll>
             <StyledContainer>
-                             
+
 
                 <StatusBar style="light" />
                 <InnerContainer>
@@ -44,40 +52,48 @@ const RegistrarUsuario = () => {
 
 
                     <Formik
-                        initialValues={{ usuario: '', contrasenia: '', nombre: '', apellido: '', confirmarContrasenia: '' }}
+                        initialValues={
+                            {
+                                dni: '',
+                                nombre_Usuario: '',
+                                contrasenia: '',
+                                nombre: '',
+                                apellido: '',
+                                correo: '',
+                                telefono: '',
+                                confirmarContrasenia: ''
+                            }}
                         onSubmit={async (values) => {
                             try {
-                                // console.log(values);
-                                /*
-                                const respuesta = await fetch('http://192.168.90.86:4005/uber/user/login', {
+
+                               // console.log(Ruta);
+                               // console.log(values);
+                                
+                                const respuesta = await fetch(Ruta, {
                                     method: 'POST',
                                     headers: {
                                         Accept: 'application/json',
                                         'Content-Type': 'application/json'
                                     },
-                                    body: JSON.stringify({
-                                        login: values.login,
-                                        contrasenia: values.contrasenia
-                                    })
+                                    body: JSON.stringify(values)
                                 });
         
                                 const json = await respuesta.json();
                                 const data = json.Información;
-                                if (!data.token) {
-                                    console.log(data);
-                                }
-                                else {
-                                    const token = data.token;
-                                    console.log("Llego");
-                                    await AsyncStorage.setItem('token', token);
-                                }
-                                //console.log(data.token);
-                                console.log(data.usuario);
+                             
+                                
+                                
                                 console.log("Mensaje: ", json.Mensaje);
                                 Alert.alert("Aviso", json.Mensaje);
-                                const token = await AsyncStorage.getItem('token');
-                                console.log("Token", token);
-                           */
+                                
+                                if(json.Mensaje == "Usuario Registrado")
+                                {
+                                    console.log("titulo", json.Mensaje);
+                                }
+                                else
+                                {
+                                    console.log("error");
+                                }
                             } catch (error) {
                                 console.log(error);
                                 Alert.alert("Error", "error: " + error.message);
@@ -86,15 +102,15 @@ const RegistrarUsuario = () => {
                         }} >
                         {({ handleChange, handleBlur, handleSubmit, values }) => (
                             <StyledFormArea>
-                                <StyledScroll>
+
                                 <MyTextInput
                                     label="DNI"
-                                    icon="person"
+                                    icon="credit-card"
                                     placeholder="Ingrese su DNI"
                                     placeholderTextColor={color5}
-                                    onChangeText={handleChange('usuario')}
-                                    onBlur={handleBlur('usuario')}
-                                    values={values.usuario}
+                                    onChangeText={handleChange('dni')}
+                                    onBlur={handleBlur('dni')}
+                                    values={values.dni}
 
                                 />
 
@@ -103,9 +119,9 @@ const RegistrarUsuario = () => {
                                     icon="person"
                                     placeholder="Ingrese su Usuario"
                                     placeholderTextColor={color5}
-                                    onChangeText={handleChange('usuario')}
-                                    onBlur={handleBlur('usuario')}
-                                    values={values.usuario}
+                                    onChangeText={handleChange('nombre_Usuario')}
+                                    onBlur={handleBlur('nombre_Usuario')}
+                                    values={values.nombre_Usuario}
 
                                 />
 
@@ -136,9 +152,20 @@ const RegistrarUsuario = () => {
                                     icon="mail"
                                     placeholder="Ingrese su correo"
                                     placeholderTextColor={color5}
-                                    onChangeText={handleChange('nombre')}
-                                    onBlur={handleBlur('nombre')}
-                                    values={values.nombre}
+                                    onChangeText={handleChange('correo')}
+                                    onBlur={handleBlur('correo')}
+                                    values={values.correo}
+
+                                />
+
+                                <MyTextInput
+                                    label="Teléfono"
+                                    icon="device-mobile"
+                                    placeholder="Ingrese su teléfono"
+                                    placeholderTextColor={color5}
+                                    onChangeText={handleChange('telefono')}
+                                    onBlur={handleBlur('telefono')}
+                                    values={values.telefono}
 
                                 />
 
@@ -162,13 +189,13 @@ const RegistrarUsuario = () => {
                                     icon="lock"
                                     placeholder="Ingrese su contraseña"
                                     placeholderTextColor={color5}
-                                    onChangeText={handleChange('contrasenia')}
-                                    onBlur={handleBlur('contrasenia')}
-                                    values={values.contrasenia}
-                                    secureTextEntry={hidePassword}
+                                    onChangeText={handleChange('confirmarContrasenia')}
+                                    onBlur={handleBlur('confirmarContrasenia')}
+                                    values={values.confirmarContrasenia}
+                                    secureTextEntry={hidePassword2}
                                     isPassword={true}
-                                    hidePassword={hidePassword}
-                                    setHidePassword={setHidePassword}
+                                    hidePassword={hidePassword2}
+                                    setHidePassword={setHidePassword2}
 
                                 />
 
@@ -177,7 +204,7 @@ const RegistrarUsuario = () => {
                                     <ButtonText>Registrar</ButtonText>
                                 </StyledButton>
                                 <Line />
-                                <StyledButton btn2={true} onPress={handleSubmit}>
+                                <StyledButton btn2={true} onPress={presInicio}>
                                     <ButtonText btn2={true} >Cancelar</ButtonText>
                                 </StyledButton>
                                 <Line />
@@ -189,14 +216,14 @@ const RegistrarUsuario = () => {
                                     </TextLink>
 
                                 </ExtraView>
-                                </StyledScroll>
+
                             </StyledFormArea>
                         )}
                     </Formik>
                 </InnerContainer>
-               
-            </StyledContainer>
 
+            </StyledContainer>
+        </StyledScroll>
     );
 };
 

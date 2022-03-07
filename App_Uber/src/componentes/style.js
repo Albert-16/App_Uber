@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { View, Text, Image, TextInput, Touchable,ScrollView } from "react-native";
+import { View, Text, Image, TextInput, Touchable, ScrollView } from "react-native";
 import Constants from "expo-constants";
 
 
@@ -16,11 +16,14 @@ export const Colors = {
     color7: "#28A745"
 };
 
-const { color1, color2, color3, color4, color5, color6 ,color7} = Colors;
+const { color1, color2, color3, color4, color5, color6, color7 } = Colors;
 
 export const StyledScroll = styled.ScrollView`
-    background-color:${color1};
+    background-color: ${color1};
 `;
+
+
+
 
 export const StyledContainer = styled.View`
     flex: 1;
@@ -40,6 +43,30 @@ export const InnerContainer = styled.View`
     align-items:center;
 `;
 
+export const MenuContainer = styled(InnerContainer)`
+    padding: 25px;
+    padding-top: 10px;
+    justify-content: center;  
+`;
+
+export const Avatar = styled.Image`
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    border-radius: 50px;
+    border-width: 2px;
+    border-color: ${color6};
+    margin-bottom: 10px;
+    margin-top: 10px;
+`;
+
+
+export const MenuImagen = styled.Image`
+    height: 50%;
+    min-width: 100%
+`;
+
+
 export const PageLogo = styled.Image`
     width:250px;
     height: 200px;
@@ -51,6 +78,11 @@ export const PageTitulo = styled.Text`
     font-weight:bold;
     color: ${color5};
     padding:10px;
+
+    ${(props) => props.Menu && `
+        font-size: 35px;
+        
+    `} 
 `;
 
 export const Subtitle = styled.Text`
@@ -59,6 +91,12 @@ export const Subtitle = styled.Text`
     letter-spacing:1px;
     font-weight:bold;
     color: ${color6};
+
+    ${(props) => props.Menu && `
+        margin-bottom: 5px;
+        font-weight: normal;
+         text-align: center;
+    `} 
 `;
 
 export const StyledFormArea = styled.View`
@@ -108,7 +146,7 @@ export const StyledButton = styled.TouchableOpacity`
     margin-vertical:5px;
     height:60px;
 
-    ${(props)=> props.btn2 == true && `
+    ${(props) => props.btn2 == true && `
         background-color: ${color7};
         flex-direction: row;
         justify-content: center;

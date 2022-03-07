@@ -4,6 +4,7 @@ import { Octicons, Ionicons } from '@expo/vector-icons';
 import { Formik } from 'formik';
 import { Alert, View } from 'react-native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { InfoApi } from "../Configuracion/configuracion";
 
 import {
     StyledContainer,
@@ -29,10 +30,12 @@ import {
 
 const { color2, color6, color5 } = Colors;
 
+const { IP, LOGIN, PORT } = InfoApi;
+
 const login = () => {
 
     const [hidePassword, setHidePassword] = useState(true);
-    
+    const Ruta = "http://" + IP + ":" + PORT + LOGIN;
     return (
         <StyledContainer>
             <StatusBar style="light" />
@@ -46,7 +49,7 @@ const login = () => {
                     onSubmit={async (values) => {
                         try {
                             // console.log(values);
-                            const respuesta = await fetch('http://192.168.90.86:4005/uber/user/login', {
+                            const respuesta = await fetch(Ruta, {
                                 method: 'POST',
                                 headers: {
                                     Accept: 'application/json',

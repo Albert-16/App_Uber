@@ -10,6 +10,9 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "~1.15.0",
+    "dotenv": "^16.0.0",
+    "env-cmd": "^10.1.0",
     "expo": "~44.0.0",
     "expo-constants": "~13.0.1",
     "expo-status-bar": "~1.2.0",
@@ -18,8 +21,7 @@
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
     "react-native-web": "0.17.1",
-    "styled-components": "^5.3.3",
-    "@react-native-async-storage/async-storage": "~1.15.0"
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
