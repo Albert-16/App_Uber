@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-
-
+import { Provider } from 'react-redux';
+import { store } from '../Store/store';
+import NavOptions from '../Navegacion/NavOptions';
 import {
     StyledContainer,
     InnerContainer,
@@ -14,7 +16,9 @@ import {
     MenuContainer,
     Avatar,
     MenuImagen,
-    StyleScrollView
+    StyleScrollView,
+    PageLogo,
+    PageHomeLogo
 } from '../Componentes/style';
 
 
@@ -23,58 +27,17 @@ const MenuPrincipal = ({ navigation }) => {
 
     return (
 
-        <StyledContainer>
+        <Provider store={store}>
+            <StyledContainer>
             <StatusBar style="light" />
+                <InnerContainer>
+                    <PageTitulo>Uber</PageTitulo>
+                    <PageHomeLogo resizeMode="contain" source={require('../../assets/img/LogouBER2.png')} />
+                    <NavOptions />
+                </InnerContainer>
+            </StyledContainer>
 
-            <InnerContainer>
-
-
-                <MenuContainer>
-                    <StyledFormArea>
-
-                        <PageTitulo Menu={true}>Uber</PageTitulo>
-                        <Subtitle Menu={true}>Pagina Principal</Subtitle>
-                       
-                        <Line />
-                        <StyledButton onPress={() => { navigation.navigate("Viajes")}}>
-                            <ButtonText>Viajes</ButtonText>
-                        </StyledButton>
-                       
-
-                        <Line />
-                        <StyledButton onPress={() => { navigation.navigate("Vehículos") }}>
-                            <ButtonText>Vehículos</ButtonText>
-                        </StyledButton>
-                        <Line />
-
-                    
-                        <StyledButton onPress={() => { navigation.navigate("Ciudades") }}>
-                            <ButtonText>Ciudades</ButtonText>
-                        </StyledButton>
-                        <Line />
-
-                       
-                        <StyledButton onPress={() => { navigation.navigate("Modelos") }}>
-                            <ButtonText>Modelos</ButtonText>
-                        </StyledButton>
-                        <Line />
-
-                        
-                        <StyledButton onPress={() => { navigation.navigate("Marcas") }}>
-                            <ButtonText>Marcas</ButtonText>
-                        </StyledButton>
-                        <Line />
-
-                        <StyledButton onPress={() => {navigation.navigate("Login") }}>
-                            <ButtonText>Cerrar Sesión</ButtonText>
-                        </StyledButton>
-                        <Line />
-                    </StyledFormArea>
-                </MenuContainer>
-
-            </InnerContainer>
-
-        </StyledContainer>
+        </Provider>
 
     );
 };

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "react-redux": "^7.2.6",
     "yet": "^0.1.0"
   }
 }

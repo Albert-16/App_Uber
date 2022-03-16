@@ -31,7 +31,7 @@ const MenuNavegacion = () => {
                 headerLeftContainerStyle: {
                     paddingLeft: 20
                 },
-            }} initialRouteName="Login" >
+            }} initialRouteName="Inicio" >
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Registro Usuario" component={RegistroUsuario} />
                 <Stack.Screen name="Inicio" component={Bienvenida} />

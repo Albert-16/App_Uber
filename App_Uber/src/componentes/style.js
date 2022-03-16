@@ -66,6 +66,10 @@ export const MenuImagen = styled.Image`
     min-width: 100%
 `;
 
+export const PageHomeLogo = styled.Image`
+    height: 80px;
+    width: 80px;
+`;
 
 export const PageLogo = styled.Image`
     width:250px;
@@ -130,11 +134,21 @@ export const LeftIcon = styled.View`
     z-index:1;
 `;
 
+export const CenterIcon = styled.View`
+
+`;
+
+
 export const RightIcon = styled.TouchableOpacity`
     right:15px;
     top:38px;
     position:absolute;
     z-index:1;
+
+    ${(props) => props.center == true && `
+        right:10px;
+        top: 15px;
+    `}
 `;
 
 export const StyledButton = styled.TouchableOpacity`
@@ -152,6 +166,25 @@ export const StyledButton = styled.TouchableOpacity`
         justify-content: center;
     `}
 `;
+
+export const StyledButtonHome = styled.TouchableOpacity`
+    padding: 15px;
+    background-color: ${color6};
+    justify-content: center;
+    align-items: center;
+    border-radius:5px;
+    margin-vertical:5px;
+    height:80px;
+    width: 200px;
+    margin:10px;
+
+    ${(props) => props.btn2 == true && `
+        background-color: ${color7};
+        flex-direction: row;
+        justify-content: center;
+    `}
+`;
+
 
 export const ButtonText = styled.Text`
     color: ${color5};
