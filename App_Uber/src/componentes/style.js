@@ -4,7 +4,7 @@ import Constants from "expo-constants";
 
 
 const StatusBarHeight = Constants.statusBarHeight;
-
+import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 
 export const Colors = {
     color1: "#12191D",
@@ -23,7 +23,12 @@ export const StyledScroll = styled.ScrollView`
 `;
 
 
-
+export const StyledContainerMap = styled.View`
+    flex: 1;
+    padding: 0px;
+    padding-top: ${StatusBarHeight + 50}px;
+    background-color: ${color1};
+`;
 
 export const StyledContainer = styled.View`
     flex: 1;
@@ -119,6 +124,8 @@ export const StyledTextInput = styled.TextInput`
    margin-bottom:10px;
    color: ${color5};
 `;
+
+
 
 export const StyledInputLabel = styled.Text`
     color: ${color6};
@@ -228,3 +235,5 @@ export const TextLinkContent = styled.Text`
     color: ${color6};
     font-size: 15px;
 `;
+
+

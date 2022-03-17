@@ -31,7 +31,7 @@ import {
 
 const { color2, color6, color5 } = Colors;
 
-const { IP, LOGIN, PORT } = InfoApi;
+import { IP, LOGIN, PORT } from '@env';
 
 
 

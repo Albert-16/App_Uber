@@ -12,6 +12,7 @@ import Ciudades from './../Vistas/viewCiudades.js'
 import RecuperarCuenta from './../Vistas/RecuperarCuenta';
 import RestablecerContraseña from './../Vistas/RestablecerContraseña';
 import MenuPrincipal from './../Vistas/MenuPrincipal';
+import MapViewViajes from './../Vistas/MapView';
 import { Colors } from './../Componentes/style';
 import "react-native-gesture-handler";
 const { color5, color6, color1, color2 } = Colors;
@@ -32,17 +33,67 @@ const MenuNavegacion = () => {
                     paddingLeft: 20
                 },
             }} initialRouteName="Inicio" >
-                <Stack.Screen name="Login" component={Login} />
-                <Stack.Screen name="Registro Usuario" component={RegistroUsuario} />
-                <Stack.Screen name="Inicio" component={Bienvenida} />
-                <Stack.Screen name="Viajes" component={Viajes} />
-                <Stack.Screen name="Vehículos" component={Vehiculos} />
-                <Stack.Screen name="Marcas" component={Marcas} />
-                <Stack.Screen name="Modelos" component={Modelos} />
-                <Stack.Screen name="Ciudades" component={Ciudades} />
-                <Stack.Screen name="Recuperar Cuenta" component={RecuperarCuenta} />
-                <Stack.Screen name="Restablecer Contraseña" component={RestablecerContraseña} />
-                <Stack.Screen name="Menú Principal" component={MenuPrincipal} />
+                <Stack.Screen name="Login" component={Login}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="Registro Usuario" component={RegistroUsuario}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+                <Stack.Screen name="MapView" component={MapViewViajes}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="Inicio" component={Bienvenida}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="Viajes" component={Viajes}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="Vehículos" component={Vehiculos}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="Marcas" component={Marcas}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="Modelos" component={Modelos}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="Ciudades" component={Ciudades}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="Recuperar Cuenta" component={RecuperarCuenta}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="Restablecer Contraseña" component={RestablecerContraseña}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="Menú Principal" component={MenuPrincipal}
+                    options={{
+                        title: ""
+                    }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );

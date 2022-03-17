@@ -31,7 +31,7 @@ const data = [
     {
         id: "1",
         title: "Viajes",
-        screen: "Viajes",
+        screen: "MapView",
         icon: "enviroment"
     },
     {
@@ -43,13 +43,13 @@ const data = [
     {
         id: "3",
         title: "Historial de Viajes",
-        screen: "Viajes",
+        screen: "Login",
         icon: "book"
     }
 ];
 
 const NavOptions = () => {
- console.log(HOST);
+ 
    const navigation = useNavigation()
     return (
         <InnerContainer>

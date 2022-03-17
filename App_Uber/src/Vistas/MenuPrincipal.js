@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet,SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Provider } from 'react-redux';
-import { store } from '../Store/store';
+
+
 import NavOptions from '../Navegacion/NavOptions';
 import {
     StyledContainer,
@@ -12,6 +12,7 @@ import {
     StyledFormArea,
     StyledButton,
     ButtonText,
+    Colors,
     Line,
     MenuContainer,
     Avatar,
@@ -21,25 +22,93 @@ import {
     PageHomeLogo
 } from '../Componentes/style';
 
-
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { GOOGLE_API , API_KEY } from '@env';
+const { color2, color5, color6 } = Colors;
+import {setDestination,setOrigin } from '../Slices/navSlice';
+import { useDispatch } from 'react-redux';
 
 const MenuPrincipal = ({ navigation }) => {
+  const dispatch = useDispatch()
 
     return (
 
-        <Provider store={store}>
+     
             <StyledContainer>
-            <StatusBar style="light" />
+                <StatusBar style="light" />
                 <InnerContainer>
-                    <PageTitulo>Uber</PageTitulo>
+
                     <PageHomeLogo resizeMode="contain" source={require('../../assets/img/LogouBER2.png')} />
+
+                    <GooglePlacesAutocomplete
+
+                        styles={{
+                            container: {
+                                flex: 0,
+                                margin: 20,
+                                width: 300,
+                            },
+                            textInput: {
+                                backgroundColor: color5,
+                                padding: 15,
+                                paddingLeft: 55,
+                                paddingRight: 55,
+                                borderRadius: 5,
+                                fontSize: 18,
+                                height: 60,
+                                width: 200,
+                                marginVertical: 3,
+                                marginBottom: 10,
+                                color: color2
+                            }
+                        }}
+                        onPress={(data, details = null) => {
+                            // 'details' is provided when fetchDetails = true
+                            dispatch(setOrigin({
+                                location: details.geometry.location,
+                                description: data.description,
+                            }));
+
+                            dispatch(setDestination(null));
+                          }}
+                        placeholder="Search"
+                        fetchDetails={true}
+                        debounce={400}
+                        enablePoweredByContainer={false}
+                        minLength={2}
+                        returnKeyType={"search"}
+                        query={{key: 'AIzaSyB-t2_4x5my61YJL1IM1T_fLQ2s_xh7r4M', language: "en"}
+                        
+                        }
+                        nearbyPlacesAPI='GooglePlacesSearch'
+
+                    />
                     <NavOptions />
+
+
                 </InnerContainer>
             </StyledContainer>
-
-        </Provider>
+           
+        
 
     );
 };
+
+
+const styles = StyleSheet.create({
+    textInput: {
+        backgroundColor: color2,
+        padding: 15,
+        width: '120px',
+        paddingLeft: 55,
+        paddingRight: 55,
+        borderRadius: 5,
+        fontSize: 18,
+        height: '100px',
+        marginVertical: 3,
+        marginBottom: 10,
+        color: color5
+    }
+});
 
 export default MenuPrincipal;
