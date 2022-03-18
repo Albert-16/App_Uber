@@ -38,8 +38,7 @@ export const StyledContainer = styled.View`
 `;
 
 export const StyleScrollView = styled.ScrollView`
-    background-color: ${color6};
-    margin-horizontal:20px;
+
 `;
 
 export const InnerContainer = styled.View`

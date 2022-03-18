@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet,SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 
@@ -21,17 +21,42 @@ import {
 
 import Map from '../Componentes/Map';
 import tw from 'tailwind-react-native-classnames';
-const MapViewViajes = ({ navigation }) => {
+import { createStackNavigator } from '@react-navigation/stack'
+import NavigatorCard from '../Navegacion/NavCard';
+import UberVehiculosOptions from '../Navegacion/UberVehiculosOptions';
 
+const MapViewViajes = ({ navigation }) => {
+    const Stack = createStackNavigator();
     return (
-        <StyledContainerMap>
-           
+       
+        <View style={tw`bg-black flex-1`}>
+
             <View style={tw`h-1/2`}>
                 <Map />
             </View>
-          
-        </StyledContainerMap>
 
+            <View style={tw`h-1/2`}>
+                <Stack.Navigator>
+                    <Stack.Screen
+                        name='NavigatorCard'
+                        component={NavigatorCard}
+                        options={{
+                            headerShown: false
+                        }}
+                    />
+
+                    <Stack.Screen
+                        name='uberVehiculosOptions'
+                        component={UberVehiculosOptions}
+                        options={{
+                            headerShown: false
+                        }}
+                    />
+                </Stack.Navigator>
+            </View>
+
+        </View>
+      
 
 
 

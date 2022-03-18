@@ -64,22 +64,23 @@ const MenuPrincipal = ({ navigation }) => {
                         }}
                         onPress={(data, details = null) => {
                             // 'details' is provided when fetchDetails = true
-                            dispatch(setOrigin({
+                           
+                           dispatch(setOrigin({
                                 location: details.geometry.location,
                                 description: data.description,
-                            }));
+                            })); 
+                           // console.log(data);
+                           // console.log(details);
 
                             dispatch(setDestination(null));
                           }}
-                        placeholder="Search"
+                        placeholder="¿A dónde desea ir?"
                         fetchDetails={true}
                         debounce={400}
                         enablePoweredByContainer={false}
                         minLength={2}
                         returnKeyType={"search"}
-                        query={{key: 'AIzaSyB-t2_4x5my61YJL1IM1T_fLQ2s_xh7r4M', language: "en"}
-                        
-                        }
+                        query={{key: API_KEY, language: "en"}}
                         nearbyPlacesAPI='GooglePlacesSearch'
 
                     />

@@ -50,7 +50,7 @@ const data = [
 
 const NavOptions = () => {
  
-   const navigation = useNavigation()
+   const navigation = useNavigation();
     return (
         <InnerContainer>
             <MenuContainer>

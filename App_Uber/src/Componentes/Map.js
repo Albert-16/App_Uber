@@ -23,17 +23,24 @@ const Map = () => {
             style={tw`flex-1`}
             mapType="mutedStandard"
             initialRegion={{
-                latitude: 14.041261822576123,
-                longitude: -86.57036613214595,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421
+                latitude: origin.location.lat,
+                longitude: origin.location.lng,
+                latitudeDelta: 0.005,
+                longitudeDelta: 0.005
             }}
         >
 
-            <Marker
-                coordinate={{ latitude: 14.041261822576123,
-                    longitude: -86.57036613214595,}}
-            />
+            {origin?.location && (
+                <Marker
+                    coordinate={{
+                        latitude: origin.location.lat,
+                        longitude: origin.location.lng,
+                    }}
+                    title="Origin"
+                    description={origin.description}
+                    identifier='origin'
+                />
+            )}
 
 
 
