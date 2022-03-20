@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 
 
 import NavOptions from '../Navegacion/NavOptions';
+import NavFavoritos from '../Componentes/NavFavoritos';
 import {
     StyledContainer,
     InnerContainer,
@@ -62,17 +63,22 @@ const MenuPrincipal = ({ navigation }) => {
                                 color: color2
                             }
                         }}
-                        onPress={(data, details = null) => {
+                        onPress={async(data, details = null) => {
                             // 'details' is provided when fetchDetails = true
                            
                            dispatch(setOrigin({
                                 location: details.geometry.location,
                                 description: data.description,
                             })); 
+
+                            
                            // console.log(data);
                            // console.log(details);
 
                             dispatch(setDestination(null));
+                         
+                           
+                             
                           }}
                         placeholder="¿A dónde desea ir?"
                         fetchDetails={true}
@@ -85,7 +91,7 @@ const MenuPrincipal = ({ navigation }) => {
 
                     />
                     <NavOptions />
-
+                    <NavFavoritos/>      
 
                 </InnerContainer>
             </StyledContainer>

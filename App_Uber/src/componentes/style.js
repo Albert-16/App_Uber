@@ -107,6 +107,21 @@ export const Subtitle = styled.Text`
     `} 
 `;
 
+export const Titulo = styled.Text`
+    font-size:18px;
+    text-align:center;
+    font-weight:bold;
+    color: ${color6};
+`;
+
+export const Subtitulo = styled.Text`
+    font-size:16px;
+    letter-spacing:1px;
+    color: ${color5};
+
+
+`;
+
 export const StyledFormArea = styled.View`
     width: 90%;
 `;
@@ -138,6 +153,11 @@ export const LeftIcon = styled.View`
     top:38px;
     position:absolute;
     z-index:1;
+
+    ${(props) => props.center == true && `
+        left:15px;
+        top:15px;
+    `}
 `;
 
 export const CenterIcon = styled.View`
@@ -153,7 +173,7 @@ export const RightIcon = styled.TouchableOpacity`
 
     ${(props) => props.center == true && `
         right:10px;
-        top: 15px;
+        top: 40px;
     `}
 `;
 
@@ -171,6 +191,34 @@ export const StyledButton = styled.TouchableOpacity`
         flex-direction: row;
         justify-content: center;
     `}
+
+    ${(props) => props.btn3 == true && `
+    background-color: ${color7};
+    border-radius:20px;
+    margin:10px;
+    margin-left:15px;
+    width:150px;
+`}
+
+${(props) => props.btn4 == true && `
+background-color: ${color6};
+border-radius:20px;
+margin:10px;
+margin-left:15px;
+width:150px;
+`}
+`;
+
+export const StyledButtonFav = styled.TouchableOpacity`
+    padding: 30px;
+    background-color: ${color2};
+    justify-content: center;
+    align-items: center;
+    border-radius:5px;
+    margin-vertical:5px;
+    height:80px;
+    width: 360px;
+
 `;
 
 export const StyledButtonHome = styled.TouchableOpacity`
@@ -178,10 +226,10 @@ export const StyledButtonHome = styled.TouchableOpacity`
     background-color: ${color6};
     justify-content: center;
     align-items: center;
-    border-radius:5px;
+    border-radius:25px;
     margin-vertical:5px;
-    height:80px;
-    width: 200px;
+    height:115px;
+    width: 250px;
     margin:10px;
 
     ${(props) => props.btn2 == true && `

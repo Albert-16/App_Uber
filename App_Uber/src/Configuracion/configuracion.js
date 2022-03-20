@@ -6,3 +6,4 @@ export const InfoApi = {
     RECUPERARCONTRA: "/uber/user/recuperarContrasenia",
     RESTABLECERCONTRA: "/uber/user/restablecerContrasenia"
 };
+

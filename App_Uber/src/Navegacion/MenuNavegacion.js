@@ -32,7 +32,7 @@ const MenuNavegacion = () => {
                 headerLeftContainerStyle: {
                     paddingLeft: 20
                 },
-            }} initialRouteName="Inicio" >
+            }} initialRouteName="Login" >
                 <Stack.Screen name="Login" component={Login}
                     options={{
                         title: ""
@@ -46,7 +46,9 @@ const MenuNavegacion = () => {
 
                 <Stack.Screen name="MapView" component={MapViewViajes}
                     options={{
-                        title: ""
+                        title:"#",
+                        headerShown:false
+
                     }}
                 />
                 <Stack.Screen name="Inicio" component={Bienvenida}

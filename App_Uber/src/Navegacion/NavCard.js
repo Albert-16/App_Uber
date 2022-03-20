@@ -16,7 +16,10 @@ import {
     MenuImagen,
     StyleScrollView,
     PageLogo,
-    PageHomeLogo
+    PageHomeLogo,
+    LeftIcon,
+    StyledButtonHome,
+    StyledButtonFav
 } from '../Componentes/style';
 
 import tw from 'tailwind-react-native-classnames';
@@ -26,6 +29,8 @@ import { API_KEY } from '@env';
 import { useDispatch } from 'react-redux';
 import { setDestination, setOrigin } from '../Slices/navSlice';
 import { useNavigation } from '@react-navigation/native';
+import NavFavoritos from "../Componentes/NavFavoritos";
+import { Octicons, Ionicons ,Fontisto } from '@expo/vector-icons';
 const NavigatorCard = () => {
 
     const dispatch = useDispatch();
@@ -50,7 +55,7 @@ const NavigatorCard = () => {
                             }));
                          //   console.log(data);
                            // console.log(details);
-                            navigation.navigate("UberVehiculosOptions");
+                            navigation.navigate("Uber");
                            // dispatch(setDestination(null));
                         }}
                         placeholder="¿A dónde desea ir?"
@@ -65,6 +70,19 @@ const NavigatorCard = () => {
                     />
 
                 </View>
+
+                <NavFavoritos/>
+            </View>
+            <View style={tw`flex-row mt-auto`}>
+                <StyledButton btn4={true}  >
+                    <Fontisto name="taxi" color={color5} size={16} />
+                    <ButtonText>Viajar</ButtonText>
+                </StyledButton>
+
+                <StyledButton btn3={true}  >
+                    <Fontisto name="taxi" color={color5} size={16} />
+                    <ButtonText>Método de Pago</ButtonText>
+                </StyledButton>
             </View>
         </SafeAreaView>
 

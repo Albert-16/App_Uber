@@ -55,22 +55,21 @@ const NavOptions = () => {
         <InnerContainer>
             <MenuContainer>
 
-                <FlatList data={data}   keyExtractor={(item) => item.id} 
+                <FlatList data={data}  keyExtractor={(item) => item.id} 
                 renderItem={({ item }) => (
                     <StyledButtonHome onPress={() => { navigation.navigate(item.screen)} }>
                         <CenterIcon>
-                            <AntDesign name={item.icon} size={30} color={color5} />
+                            <AntDesign name={item.icon} size={40} color={color5} />
                         </CenterIcon>
                         <ButtonText>{item.title}</ButtonText>
                         <RightIcon center={true}>
-                              <AntDesign name="rightcircle" size={30} color={color5} />
+                              <AntDesign name="rightcircle" size={35} color={color5} />
                         </RightIcon>
                     </StyledButtonHome>
                    
                 )}
                 />
-             <Line />
-             <Subtitle>Sistema de Uber ® 2022</Subtitle>
+         
             </MenuContainer>
 
         </InnerContainer>
