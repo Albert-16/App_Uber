@@ -70,10 +70,10 @@ const NavigatorCard = () => {
                     />
 
                 </View>
-
-                <NavFavoritos/>
+                <View><NavFavoritos/></View>
+                
             </View>
-            <View style={tw`flex-row mt-auto`}>
+            <View style={tw`flex-row mt-auto border-t border-gray-200`}>
                 <StyledButton btn4={true}  >
                     <Fontisto name="taxi" color={color5} size={16} />
                     <ButtonText>Viajar</ButtonText>

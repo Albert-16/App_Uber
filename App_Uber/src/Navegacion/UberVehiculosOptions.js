@@ -24,6 +24,9 @@ import {
   Titulo,
   Formik
 } from '../Componentes/style';
+
+import 'intl';
+import 'intl/locale-data/jsonp/es-HN';
 const { color5 } = Colors;
 import tw from 'tailwind-react-native-classnames';
 import { useNavigation } from '@react-navigation/native';
@@ -33,23 +36,9 @@ import { IP, IMAGE, PORT, LISTARVEHICULOS } from '@env';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const Ruta = "http://" + IP + ":" + PORT + IMAGE;
 const RutaListar = "http://" + IP + ":" + PORT + LISTARVEHICULOS;
-import { setVehiculos } from '../Slices/navSlice';
+
 import { useSelector } from 'react-redux';
 import { selectedTravelTimeInformation } from '../Slices/navSlice';
-const data = [
-  {
-    id: "Uber-X-123",
-    title: "UberX",
-    multiplier: 1.2,
-    image: "uber3.jpeg"
-  },
-  {
-    id: "Uber-LX-123",
-    title: "Uber LUX",
-    multiplier: 1.2,
-    image: "uber4.jpg"
-  }
-]
 
 
 
@@ -60,7 +49,7 @@ const data = [
 
 
 
-
+const surgeChargeRate = 1.5;
 
 const UberVehiculosOptions = () => {
   const navigation = useNavigation();
@@ -124,7 +113,7 @@ const UberVehiculosOptions = () => {
             <PageTitulo style={tw`text-white py-3 text-xl  text-center `}>Selecciona un Viaje - {travelTimeInformation?.distance.text}</PageTitulo>
             <Line />
           </View>
-          <View style={tw`h-1/2`} >
+         
             <FlatList data={ListaDatos}
               keyExtractor={(item) => item.Id}
               scrollEnabled={true}
@@ -144,17 +133,24 @@ const UberVehiculosOptions = () => {
                     <Text style={tw`text-white  font-semibold`}>{title}</Text>
                     <Text style={tw`text-white`}>Duración:{travelTimeInformation?.duration.text}</Text>
                   </View>
-                  <Text style={tw`text-white `}>L. {costo.toFixed(0)}.00</Text>
+                  <Text style={tw`text-white `}>
+                    {new Intl.NumberFormat('es-hn',{
+                      style: 'currency',
+                      currency: 'HNL'
+                    }).format(
+                     (travelTimeInformation?.distance.value * surgeChargeRate * multiplier) / 100
+                    )}
+                    </Text>
                 </TouchableOpacity>
               )}
             />
 
 
-          </View>
+          
 
 
 
-          <View style={tw`h-1/2`}>
+          <View style={tw`mt-auto border-t border-gray-200`}>
             <StyledButton disabled={!selected} style={tw`rounded-full`}>
               <Text style={tw`text-white text-center text-xl`}>Seleccionar {selected?.title}</Text>
             </StyledButton>

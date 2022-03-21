@@ -80,7 +80,7 @@ const MenuPrincipal = ({ navigation }) => {
                            
                              
                           }}
-                        placeholder="¿A dónde desea ir?"
+                        placeholder="Lugar de Partida"
                         fetchDetails={true}
                         debounce={400}
                         enablePoweredByContainer={false}

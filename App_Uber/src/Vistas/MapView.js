@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, SafeAreaView } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView,TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 
@@ -26,13 +26,21 @@ import { createStackNavigator } from '@react-navigation/stack'
 import NavigatorCard from '../Navegacion/NavCard';
 import UberVehiculosOptions from '../Navegacion/UberVehiculosOptions';
 const { color2, color5 } = Colors;
-
+import { Octicons, Ionicons, Fontisto, FontAwesome, Entypo } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 const MapViewViajes = () => {
     const Stack = createStackNavigator();
+    const navigation = useNavigation();
     return (
 
         <View style={tw`flex-1 bg-black`}>
             <StatusBar style="dark" />
+
+            <TouchableOpacity style={tw`bg-black absolute top-16 left-8 z-50 p-3 rounded-full shadow-lg`}
+                onPress={()=>navigation.navigate("Menú Principal")}
+            >
+                <Entypo name="menu" color={color5} size={18}/>
+            </TouchableOpacity>
 
             <View style={tw`h-1/2`}>
                 <Map />
