@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet,SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet,SafeAreaView,Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 
@@ -28,6 +28,7 @@ import { GOOGLE_API , API_KEY } from '@env';
 const { color2, color5, color6 } = Colors;
 import {setDestination,setOrigin } from '../Slices/navSlice';
 import { useDispatch } from 'react-redux';
+import tw from 'tailwind-react-native-classnames';
 
 const MenuPrincipal = ({ navigation }) => {
   const dispatch = useDispatch()
@@ -35,34 +36,24 @@ const MenuPrincipal = ({ navigation }) => {
     return (
 
      
-            <StyledContainer>
+            <SafeAreaView style={tw`bg-black h-full`}>
                 <StatusBar style="light" />
-                <InnerContainer>
+                <View style={tw`p-5`}>
 
-                    <PageHomeLogo resizeMode="contain" source={require('../../assets/img/LogouBER2.png')} />
+                    <Image 
+                    resizeMode="contain" 
+                    style={
+                        {
+                            width:100,
+                            height:100,
+                            marginLeft:120 
+                        }
+                    }
+                    source={require('../../assets/img/LogouBER2.png')} />
 
                     <GooglePlacesAutocomplete
 
-                        styles={{
-                            container: {
-                                flex: 0,
-                                margin: 20,
-                                width: 300,
-                            },
-                            textInput: {
-                                backgroundColor: color5,
-                                padding: 15,
-                                paddingLeft: 55,
-                                paddingRight: 55,
-                                borderRadius: 5,
-                                fontSize: 18,
-                                height: 60,
-                                width: 200,
-                                marginVertical: 3,
-                                marginBottom: 10,
-                                color: color2
-                            }
-                        }}
+                        styles={styles}
                         onPress={async(data, details = null) => {
                             // 'details' is provided when fetchDetails = true
                            
@@ -93,8 +84,8 @@ const MenuPrincipal = ({ navigation }) => {
                     <NavOptions />
                     <NavFavoritos/>      
 
-                </InnerContainer>
-            </StyledContainer>
+                </View>
+            </SafeAreaView>
            
         
 
@@ -103,18 +94,20 @@ const MenuPrincipal = ({ navigation }) => {
 
 
 const styles = StyleSheet.create({
+    container: {
+        backgroundColor: "#000",
+        paddingTop: 20,
+        flex: 0
+    },
     textInput: {
-        backgroundColor: color2,
-        padding: 15,
-        width: '120px',
-        paddingLeft: 55,
-        paddingRight: 55,
-        borderRadius: 5,
+        backgroundColor: color5,
+        borderRadius: 0,
         fontSize: 18,
-        height: '100px',
-        marginVertical: 3,
-        marginBottom: 10,
-        color: color5
+        color: "#000",
+    },
+    textInputContainer: {
+        paddingHorizontal: 20,
+        paddingBottom: 0
     }
 });
 

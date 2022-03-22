@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import {
     StyledContainer,
@@ -24,13 +24,14 @@ import {
 
 import tw from 'tailwind-react-native-classnames';
 import { StatusBar } from 'expo-status-bar';
-const { color1, color2, color5 } = Colors;
+const { color1, color2, color5,color6,color7 } = Colors;
 import { API_KEY } from '@env';
 import { useDispatch } from 'react-redux';
 import { setDestination, setOrigin } from '../Slices/navSlice';
 import { useNavigation } from '@react-navigation/native';
 import NavFavoritos from "../Componentes/NavFavoritos";
-import { Octicons, Ionicons ,Fontisto } from '@expo/vector-icons';
+import { Octicons, Ionicons, Fontisto } from '@expo/vector-icons';
+
 const NavigatorCard = () => {
 
     const dispatch = useDispatch();
@@ -53,10 +54,10 @@ const NavigatorCard = () => {
                                 location: details.geometry.location,
                                 description: data.description,
                             }));
-                         //   console.log(data);
-                           // console.log(details);
+                            //   console.log(data);
+                            // console.log(details);
                             navigation.navigate("Uber");
-                           // dispatch(setDestination(null));
+                            // dispatch(setDestination(null));
                         }}
                         placeholder="¿A dónde desea ir?"
                         fetchDetails={true}
@@ -70,19 +71,27 @@ const NavigatorCard = () => {
                     />
 
                 </View>
-                <View><NavFavoritos/></View>
-                
-            </View>
-            <View style={tw`flex-row mt-auto border-t border-gray-200`}>
-                <StyledButton btn4={true}  >
-                    <Fontisto name="taxi" color={color5} size={16} />
-                    <ButtonText>Viajar</ButtonText>
-                </StyledButton>
+                <View><NavFavoritos /></View>
 
-                <StyledButton btn3={true}  >
+            </View>
+            <View style={tw`flex-row justify-evenly py-2 mt-auto`}>
+                <TouchableOpacity style={[tw`flex flex-row w-24 px-3 py-3 rounded-full text-center`,{
+                    backgroundColor: color6,
+                    width: 100,
+                    height:  50
+                }]}>
                     <Fontisto name="taxi" color={color5} size={16} />
-                    <ButtonText>Método de Pago</ButtonText>
-                </StyledButton>
+                    <Text style={tw`text-white text-center `}>  Viajar</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={[tw`flex flex-row justify-between w-24 px-3 py-3 rounded-full`,{
+                    backgroundColor: color7,
+                    width: 170,
+                    height:  50
+                }]}>
+                    <Fontisto name="taxi" color={color5} size={16} />
+                    <Text style={tw`text-white text-center`}>Método de Pago</Text>
+                </TouchableOpacity>
             </View>
         </SafeAreaView>
 

@@ -40,7 +40,7 @@ import {
     StyledButtonFav,
     LeftIcon
 } from '../Componentes/style';
-const {color5,color6} = Colors;
+const {color5,color6,color2} = Colors;
 import {Icon} from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames';
 import { Octicons, Ionicons,AntDesign } from '@expo/vector-icons';
@@ -48,21 +48,29 @@ const NavFavoritos = () => {
   return (
     <FlatList data={data}   
             keyExtractor={(item) => item.id} 
-            
+            ItemSeparatorComponent={()=> (
+                <View
+                    style={[tw`bg-gray-200`,{
+                        height:0.5
+                    }]}
+                />
+  )}
                 renderItem={({ item:{location,destination,icon} }) => (
-                    <StyledButtonFav style={tw`flex-row items-center p-3`}>
-                        <LeftIcon center={true}>
+                    <TouchableOpacity style={[tw`flex-row items-center p-3`]}>
+                       
 
                         <Ionicons 
-                                style={tw`p-3`}
-                                name={icon} size={30} color={color5} background={color6} />
-                        </LeftIcon>
+                                style={[tw`mr-4 rounded-full p-3`,{
+                                    backgroundColor: color6
+                                }]}
+                                name={icon} size={18} color={color5} />
+                        
                          
                             <View>
-                                <Text style={tw`text-white text-center`}>{location}</Text>
-                                <Text style={tw`text-white`}>{destination}</Text>
+                                <Text style={tw`text-white font-semibold text-lg`}>{location}</Text>
+                                <Text style={tw`text-gray-300`}>{destination}</Text>
                             </View>  
-                    </StyledButtonFav>
+                    </TouchableOpacity>
                 )}
                 />
   )

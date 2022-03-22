@@ -172,8 +172,8 @@ export const RightIcon = styled.TouchableOpacity`
     z-index:1;
 
     ${(props) => props.center == true && `
-        right:10px;
-        top: 40px;
+        right:20px;
+        top: 120px;
     `}
 `;
 

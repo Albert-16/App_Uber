@@ -38,7 +38,7 @@ const Ruta = "http://" + IP + ":" + PORT + IMAGE;
 const RutaListar = "http://" + IP + ":" + PORT + LISTARVEHICULOS;
 
 import { useSelector } from 'react-redux';
-import { selectedTravelTimeInformation } from '../Slices/navSlice';
+import { selectedTravelTimeInformation,selectedOrigin,selectedDestination } from '../Slices/navSlice';
 
 
 
@@ -55,17 +55,19 @@ const UberVehiculosOptions = () => {
   const navigation = useNavigation();
   const [selected, setSelected] = useState(null);
   const [ListarVeh, setListarVeh] = useState([]);
-  const [precio,setPrecio] = useState(0);
+  const [Cliente, setCliente] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const travelTimeInformation = useSelector(selectedTravelTimeInformation);
-  const tarifa=10;
-  const km = travelTimeInformation?.distance.value / 1000;
-  const costo = km * tarifa;
+  const origin = useSelector(selectedOrigin);
+  const destination = useSelector(selectedDestination);
  
   useEffect(async () => {
     const token = await AsyncStorage.getItem('token');
     setIsLoading(true);
-    fetch(RutaListar, {
+    const cliente = JSON.parse(await AsyncStorage.getItem('Cliente'));
+
+    setCliente(cliente);
+    await fetch(RutaListar, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -83,17 +85,8 @@ const UberVehiculosOptions = () => {
   }, []);
 
 
-  useEffect(() => {
-    try {
-      const distanciaTexto = travelTimeInformation?.duration.text;
-      const distanciaNumero = distanciaTexto.replace(" km","");
-      setPrecio(distanciaNumero.toFixed(2));
-      console.log(distanciaNumero);
-    } catch (error) {
-      console.error;
-    }
-  }, []);
-  // console.log(ListarVeh.Información);
+
+
 
   const ListaDatos = ListarVeh.Información;
   return (
@@ -101,62 +94,77 @@ const UberVehiculosOptions = () => {
 
 
     <SafeAreaView style={tw`flex-grow bg-black`}>
- 
+
+      <View>
         <View>
-          <View>
 
-            <TouchableOpacity style={tw`absolute top-2 left-3 z-50 p-2 rounded-full`}
-              onPress={() => { navigation.navigate("NavigatorCard") }}
-            >
-              <Entypo name="chevron-left" color={color5} size={30} />
-            </TouchableOpacity>
-            <PageTitulo style={tw`text-white py-3 text-xl  text-center `}>Selecciona un Viaje - {travelTimeInformation?.distance.text}</PageTitulo>
-            <Line />
-          </View>
-         
-            <FlatList data={ListaDatos}
-              keyExtractor={(item) => item.Id}
-              scrollEnabled={true}
-              renderItem={({ item: { Id, title, image, multiplier }, item }) => (
-                <TouchableOpacity style={tw`flex-row justify-between px-5 items-center ${Id === selected?.Id && "bg-gray-700"}`}
-                  onPress={() => setSelected(item)}
-                >
-                  <Image
-                    source={{
-                      uri: Ruta + image,
-                      method: 'GET',
-                    }}
-                    resizeMode="contain"
-                    style={{ width: 100, height: 100 }}
-                  />
-                  <View style={tw`-ml-5`}>
-                    <Text style={tw`text-white  font-semibold`}>{title}</Text>
-                    <Text style={tw`text-white`}>Duración:{travelTimeInformation?.duration.text}</Text>
-                  </View>
-                  <Text style={tw`text-white `}>
-                    {new Intl.NumberFormat('es-hn',{
-                      style: 'currency',
-                      currency: 'HNL'
-                    }).format(
-                     (travelTimeInformation?.distance.value * surgeChargeRate * multiplier) / 100
-                    )}
-                    </Text>
-                </TouchableOpacity>
-              )}
-            />
-
-
-          
-
-
-
-          <View style={tw`mt-auto border-t border-gray-200`}>
-            <StyledButton disabled={!selected} style={tw`rounded-full`}>
-              <Text style={tw`text-white text-center text-xl`}>Seleccionar {selected?.title}</Text>
-            </StyledButton>
-          </View>
+          <TouchableOpacity style={tw`absolute top-2 left-3 z-50 p-2 rounded-full`}
+            onPress={() => { navigation.navigate("NavigatorCard") }}
+          >
+            <Entypo name="chevron-left" color={color5} size={30} />
+          </TouchableOpacity>
+          <PageTitulo style={tw`text-white py-3 text-xl  text-center `}>Selecciona un Viaje - {travelTimeInformation?.distance?.text}</PageTitulo>
+          <Line />
         </View>
-     
+
+        <FlatList data={ListaDatos}
+          keyExtractor={(item) => item.Id}
+          scrollEnabled={true}
+          renderItem={({ item: { Id, title, image, multiplier }, item }) => (
+            <TouchableOpacity style={tw`flex-row justify-between px-5 items-center ${Id === selected?.Id && "bg-gray-700"}`}
+              onPress={() => setSelected(item)}
+            >
+              <Image
+                source={{
+                  uri: Ruta + image,
+                  method: 'GET',
+                }}
+                resizeMode="contain"
+                style={{ width: 100, height: 100 }}
+              />
+              <View style={tw`-ml-5`}>
+                <Text style={tw`text-white  font-semibold`}>{title}</Text>
+                <Text style={tw`text-white`}>Duración:{travelTimeInformation?.duration?.text}</Text>
+              </View>
+              <Text style={tw`text-white `}>
+                {new Intl.NumberFormat('es-hn', {
+                  style: 'currency',
+                  currency: 'HNL'
+                }).format(
+                  (travelTimeInformation?.distance?.value * surgeChargeRate * multiplier) / 100
+                )}
+              </Text>
+            </TouchableOpacity>
+          )}
+        />
+
+
+
+
+
+
+        <View style={tw`mt-auto border-t border-gray-200`}>
+          <StyledButton disabled={!selected} style={tw`rounded-full`}
+            onPress={() => {
+              const precio = travelTimeInformation?.distance?.value * surgeChargeRate * selected?.multiplier / 100; 
+                const DataViajes=[
+                  { 
+                    origen: origin,
+                    destino: destination,
+                    viaje: travelTimeInformation,
+                    Cliente: Cliente,
+                    Vehiculo: selected,
+                    total: precio,
+                  }
+                ];
+                console.log(DataViajes);
+            }}
+          >
+            <Text style={tw`text-white text-center text-xl`}>Seleccionar {selected?.title}</Text>
+          </StyledButton>
+        </View>
+      </View>
+
     </SafeAreaView>
 
   )
