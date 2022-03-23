@@ -53,15 +53,8 @@ const MenuPrincipal = ({ navigation }) => {
                         </StyledButton>
                         <Line />
 
-                       
-                        <StyledButton onPress={() => { navigation.navigate("Modelos") }}>
-                            <ButtonText>Modelos</ButtonText>
-                        </StyledButton>
-                        <Line />
-
-                        
-                        <StyledButton onPress={() => { navigation.navigate("Marcas") }}>
-                            <ButtonText>Marcas</ButtonText>
+                        <StyledButton onPress={() => {navigation.navigate("Modificar Usuario") }}>
+                            <ButtonText>Modificar Usuario</ButtonText>
                         </StyledButton>
                         <Line />
 
@@ -69,6 +62,7 @@ const MenuPrincipal = ({ navigation }) => {
                             <ButtonText>Cerrar Sesión</ButtonText>
                         </StyledButton>
                         <Line />
+
                     </StyledFormArea>
                 </MenuContainer>
 

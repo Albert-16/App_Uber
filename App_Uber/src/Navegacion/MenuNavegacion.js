@@ -12,6 +12,7 @@ import Ciudades from './../Vistas/viewCiudades.js'
 import RecuperarCuenta from './../Vistas/RecuperarCuenta';
 import RestablecerContraseña from './../Vistas/RestablecerContraseña';
 import MenuPrincipal from './../Vistas/MenuPrincipal';
+import UsuarioModificar from '../Vistas/UsuarioModificar';
 import { Colors } from './../Componentes/style';
 import "react-native-gesture-handler";
 const { color5, color6, color1, color2 } = Colors;
@@ -43,6 +44,8 @@ const MenuNavegacion = () => {
                 <Stack.Screen name="Recuperar Cuenta" component={RecuperarCuenta} />
                 <Stack.Screen name="Restablecer Contraseña" component={RestablecerContraseña} />
                 <Stack.Screen name="Menú Principal" component={MenuPrincipal} />
+                <Stack.Screen name="Modificar Usuario" component={UsuarioModificar} />
+
             </Stack.Navigator>
         </NavigationContainer>
     );

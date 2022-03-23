@@ -1,5 +1,5 @@
 export const InfoApi = {
-    IP: "192.168.100.9",
+    IP: "192.168.100.188",
     PORT: "4005",
     LOGIN: "/uber/user/login",
     NEWUSER: "/uber/user/guardarUsuarios",
