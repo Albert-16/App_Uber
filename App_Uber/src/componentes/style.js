@@ -3,8 +3,9 @@ import { View, Text, Image, TextInput, Touchable, ScrollView } from "react-nativ
 import Constants from "expo-constants";
 
 
+
 const StatusBarHeight = Constants.statusBarHeight;
-import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
+
 
 export const Colors = {
     color1: "#12191D",

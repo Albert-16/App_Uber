@@ -67,12 +67,6 @@ const NavOptions = () => {
                         <RightIcon disabled={!origin} center={true}>
                              <AntDesign style={tw`p-2 rounded-full w-10 mt-4`} name="rightcircle" size={30} color={color5} />
                         </RightIcon>
-                        
-                   
-
-
-
-
                 </TouchableOpacity>
 
             )}

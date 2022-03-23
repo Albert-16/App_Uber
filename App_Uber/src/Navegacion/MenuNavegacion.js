@@ -13,6 +13,7 @@ import RecuperarCuenta from './../Vistas/RecuperarCuenta';
 import RestablecerContraseña from './../Vistas/RestablecerContraseña';
 import MenuPrincipal from './../Vistas/MenuPrincipal';
 import MapViewViajes from './../Vistas/MapView';
+import MiPerfil from './../Vistas/MiPerfil';
 import { Colors } from './../Componentes/style';
 import "react-native-gesture-handler";
 const { color5, color6, color1, color2 } = Colors;
@@ -44,10 +45,18 @@ const MenuNavegacion = () => {
                     }}
                 />
 
+                <Stack.Screen name="Perfil" component={MiPerfil}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+
+
                 <Stack.Screen name="MapView" component={MapViewViajes}
                     options={{
-                        title:"#",
-                        headerShown:false
+                        title: "#",
+                        headerShown: false
 
                     }}
                 />

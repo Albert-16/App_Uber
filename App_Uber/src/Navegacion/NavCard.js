@@ -33,7 +33,7 @@ import NavFavoritos from "../Componentes/NavFavoritos";
 import { Octicons, Ionicons, Fontisto } from '@expo/vector-icons';
 
 const NavigatorCard = () => {
-
+    
     const dispatch = useDispatch();
     const navigation = useNavigation();
     return (
@@ -79,7 +79,9 @@ const NavigatorCard = () => {
                     backgroundColor: color6,
                     width: 100,
                     height:  50
-                }]}>
+                }]}
+                onPress={() => navigation.navigate("Perfil")}
+                >
                     <Fontisto name="taxi" color={color5} size={16} />
                     <Text style={tw`text-white text-center `}>  Viajar</Text>
                 </TouchableOpacity>
@@ -88,7 +90,10 @@ const NavigatorCard = () => {
                     backgroundColor: color7,
                     width: 170,
                     height:  50
-                }]}>
+                }]}
+                 onPress={() => navigation.navigate("Pago")}
+                >
+                    
                     <Fontisto name="taxi" color={color5} size={16} />
                     <Text style={tw`text-white text-center`}>Método de Pago</Text>
                 </TouchableOpacity>

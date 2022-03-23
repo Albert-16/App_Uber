@@ -35,7 +35,7 @@ const Menu = ({ navigation }) => {
                        
                         <PageTitulo Menu={true}>Uber</PageTitulo>
                         <Subtitle Menu={true}>Bienvenido</Subtitle>
-                        <Avatar resizeMode="cover" source={require('../../assets/img/Logo.png')} />
+                        <Avatar resizeMode="contain" source={require('../../assets/img/LogouBER2.png')} />
                         <Line />
                         <StyledButton onPress={() => { navigation.navigate("Menú Principal") }}>
                             <ButtonText>Menú</ButtonText>

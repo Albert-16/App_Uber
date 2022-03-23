@@ -44,7 +44,7 @@ const Login = ({ navigation }) => {
             <StyledContainer>
                 <StatusBar style="light" />
                 <InnerContainer>
-                    <PageLogo resizeMode="cover" source={require('../../assets/img/Logo.png')} />
+                    <PageLogo resizeMode="contain" source={require('../../assets/img/LogouBER2.png')} />
                     <PageTitulo>Sistema de Uber</PageTitulo>
                     <Subtitle>Iniciar Sesión</Subtitle>
 

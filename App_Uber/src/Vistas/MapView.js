@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, SafeAreaView,TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 
@@ -24,6 +24,7 @@ import Map from '../Componentes/Map';
 import tw from 'tailwind-react-native-classnames';
 import { createStackNavigator } from '@react-navigation/stack'
 import NavigatorCard from '../Navegacion/NavCard';
+import TarjetaCredito from '../Vistas/TarjetaCredito';
 import UberVehiculosOptions from '../Navegacion/UberVehiculosOptions';
 const { color2, color5 } = Colors;
 import { Octicons, Ionicons, Fontisto, FontAwesome, Entypo } from '@expo/vector-icons';
@@ -37,9 +38,9 @@ const MapViewViajes = () => {
             <StatusBar style="dark" />
 
             <TouchableOpacity style={tw`bg-black absolute top-16 left-8 z-50 p-3 rounded-full shadow-lg`}
-                onPress={()=>navigation.navigate("Menú Principal")}
+                onPress={() => navigation.navigate("Menú Principal")}
             >
-                <Entypo name="menu" color={color5} size={18}/>
+                <Entypo name="menu" color={color5} size={18} />
             </TouchableOpacity>
 
             <View style={tw`h-1/2`}>
@@ -49,20 +50,20 @@ const MapViewViajes = () => {
                 <Stack.Navigator screenOptions={{
                     headerStyled: {
                         backgroundColor: color2,
-                        
+
                     },
                     headerTintColor: color5,
                     headerTransparent: true,
-                    headerShown:false,
+                    headerShown: false,
                     headerBackTitle: '',
-                    
+
                 }}>
                     <Stack.Screen
                         name='NavigatorCard'
                         component={NavigatorCard}
                         options={{
                             title: "",
-                            headerShown:false
+                            headerShown: false
 
                         }}
                     />
@@ -72,13 +73,22 @@ const MapViewViajes = () => {
                         component={UberVehiculosOptions}
                         options={{
                             title: "Seleccione un Vehiculo",
-                          
+
+                        }}
+                    />
+
+                    <Stack.Screen
+                        name='Pago'
+                        component={TarjetaCredito}
+                        options={{
+                            title: "Seleccione un Vehiculo",
+
                         }}
                     />
                 </Stack.Navigator>
             </View>
 
-            
+
 
         </View>
 
