@@ -29,7 +29,7 @@ const { color2, color6, color5 } = Colors;
 import { IP, TarjetaCredito, PORT } from '@env';
 
 const ListaMetodoPagos = [
-  { id: 1, descripcion: 'Tarjeta de credito'},
+  { id: 1, descripcion: 'Tarjeta de crédito'},
   { id: 3, descripcion: 'Efectivo'}
 ]
 
@@ -99,7 +99,7 @@ const RegistrarUsuario = ({ navigation }) => {
                 Alert.alert("Aviso", json.Mensaje);
 
                 if (json.Titulo == "Registro Guardado") {
-                  console.log(ListaMetodoPagos[1]);
+                  //console.log(ListaMetodoPagos[1]);
                   const tipo = JSON.stringify(ListaMetodoPagos[0]);
                   await AsyncStorage.setItem('Tipo', tipo);
                     navigation.navigate("ConfirmarViaje");

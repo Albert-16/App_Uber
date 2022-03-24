@@ -24,7 +24,10 @@ const RutaMetodoPago = "http://" + IP + ":" + PORT + MetodoPago + "id=" ;
 import { useSelector } from 'react-redux';
 import { selectedTravelTimeInformation,selectedOrigin,selectedDestination } from '../Slices/navSlice';
 
-
+const ListaMetodoPagos = [
+  { id: 1, descripcion: 'Tarjeta de crédito'},
+  { id: 3, descripcion: 'Efectivo'}
+]
 const surgeChargeRate = 1.5;
 
 const UberVehiculosOptions = () => {
@@ -146,6 +149,8 @@ const UberVehiculosOptions = () => {
                   }
                   else
                   {
+                    const tipo = JSON.stringify(ListaMetodoPagos[0]);
+                    await AsyncStorage.setItem('Tipo', tipo);
                     navigation.navigate("ConfirmarViaje");
                   }
                   //console.log(DataViajes);
