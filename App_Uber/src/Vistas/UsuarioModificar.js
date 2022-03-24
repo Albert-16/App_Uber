@@ -1,8 +1,8 @@
-import React, { useState, ScrollView } from 'react';
+import React, { useState, ScrollView, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Octicons, Ionicons } from '@expo/vector-icons';
 import { Formik } from 'formik';
-import { Alert, SectionList, View } from 'react-native';
+import { Alert, SectionList, TextInputBase, View } from 'react-native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { InfoApi } from "../Configuracion/configuracion";
 
@@ -41,6 +41,15 @@ const ModifcarUsario = ({navigation}) => {
     const presInicio = async () => {
         Alert.alert("Uber", "Hola");
     }
+
+    const [Cliente, setCliente] = useState([]);
+    useEffect(async () => {
+        const token = await AsyncStorage.getItem('token');
+        const cliente = JSON.parse(await AsyncStorage.getItem('Cliente'));
+        setCliente(cliente);
+      }, []);
+    console.log(Cliente?.Apellido);
+    const apellido2 = Cliente?.Apellido;
     return (
         <StyledScroll>
             <StyledContainer>
@@ -55,12 +64,12 @@ const ModifcarUsario = ({navigation}) => {
                     <Formik
                         initialValues={
                             {
-                                dni: '',
+                                dni:'',
                                 nombre_Usuario: '',
                                 contraseniaActual:'',
                                 contrasenia: '',
                                 nombre: '',
-                                apellido: '',
+                                apellido: Cliente?.Apellido,
                                 correo: '',
                                 telefono: '',
                                 confirmarContrasenia: ''
@@ -71,33 +80,6 @@ const ModifcarUsario = ({navigation}) => {
                                // console.log(Ruta);
                                 console.log(values);
                                 
-                              /*  
-                                const respuesta = await fetch(Ruta, {
-                                    method: 'POST',
-                                    headers: {
-                                        Accept: 'application/json',
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify(values)
-                                });
-        
-                                const json = await respuesta.json();
-                                const data = json.Información;
-                             
-                                
-                                
-                                console.log("Mensaje: ", json.Mensaje);
-                                Alert.alert("Aviso", json.Mensaje);
-                                
-                                if(json.Titulo == "Usuario Registrado")
-                                {
-                                    navigation.navigate("Login");
-                                    console.log("---");
-                                }
-                                else
-                                {
-                                    console.log("error");
-                                }*/
                             } catch (error) {
                                 console.log(error);
                                 Alert.alert("Error", "error: " + error.message);
@@ -111,6 +93,7 @@ const ModifcarUsario = ({navigation}) => {
                                     label="DNI"
                                     icon="credit-card"
                                     placeholder="Ingrese su DNI"
+                                    onSubmit={Cliente?.Apellido}                                    
                                     placeholderTextColor={color5}
                                     onChangeText={handleChange('dni')}
                                     onBlur={handleBlur('dni')}
@@ -126,7 +109,6 @@ const ModifcarUsario = ({navigation}) => {
                                     onChangeText={handleChange('nombre_Usuario')}
                                     onBlur={handleBlur('nombre_Usuario')}
                                     values={values.nombre_Usuario}
-
                                 />
 
                                 <MyTextInput
@@ -144,6 +126,7 @@ const ModifcarUsario = ({navigation}) => {
                                     label="Apellido"
                                     icon="person"
                                     placeholder="Ingrese su Apellido"
+                                    su={apellido2}
                                     placeholderTextColor={color5}
                                     onChangeText={handleChange('apellido')}
                                     onBlur={handleBlur('apellido')}
@@ -166,6 +149,7 @@ const ModifcarUsario = ({navigation}) => {
                                     label="Teléfono"
                                     icon="device-mobile"
                                     placeholder="Ingrese su teléfono"
+                                    
                                     placeholderTextColor={color5}
                                     onChangeText={handleChange('telefono')}
                                     onBlur={handleBlur('telefono')}

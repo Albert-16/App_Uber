@@ -73,6 +73,8 @@ const Login = ({ navigation }) => {
                                 else {
                                     const token = data.token;
                                     await AsyncStorage.setItem('token', token);
+                                    const dataUsuario = JSON.stringify(data.Usuario);
+                                    await AsyncStorage.setItem('Cliente', dataUsuario);
                                     const token2 = await AsyncStorage.getItem('token');
                                     console.log("Token:", token2);
                                     navigation.navigate("Inicio");
