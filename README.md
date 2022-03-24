@@ -4,12 +4,12 @@ Este proyecto se encarga del manejo de viajes para distintas zonas de la ciudad 
 
 ## Comenzando 🚀
 
-Descargar la Rama de Master y entrar a la terminal en la ruta de la carpeta del proyecto y asegurarse de tener instalado node js y npm instalados en su ordenador, Luego ejecutar el comando npm install para actualizar los paquetes del proyecto.
-
+Descargar la Rama de Main y entrar a la terminal en la ruta de la carpeta del proyecto y asegurarse de tener instalado node js y npm instalados en su ordenador, Luego ejecutar el comando npm install para actualizar los paquetes del proyecto.
 
 ### Pre-requisitos 📋
 
-Tener en ejecución la [api Uber](git+https://github.com/Albert-16/Api_Uber.git") si no la tiene la puede obtener del repositorio.
+Tener en ejecución la [Ppi Uber](git+https://github.com/Albert-16/Api_Uber.git")
+si no la tiene la puede obtener del repositorio.
 
 luego tenemos que copiar el archivo configuracion.env y cambiar su nombre a .env 
 luego configuramos las variables siguientes:
@@ -27,12 +27,8 @@ Nota: Para usar la api se necesita activar 3 Api de Google Cloud Platform:
 para que las apis funcionen debe tener su cuenta vinculada a un método de facturación
 
 Luego de habilitar las api's
-* npm install
-
-este comando actualizara los paquete que usa nuestra aplicación.
-
-
-
+* npm install - este comando actualizara los paquete que usa nuestra aplicación.
+* expo start - para ejecutar la app
 
 ## Construido con 🛠️
 
