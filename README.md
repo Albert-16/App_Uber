@@ -8,7 +8,7 @@ Descargar la Rama de Main y entrar a la terminal en la ruta de la carpeta del pr
 
 ### Pre-requisitos 📋
 
-Tener en ejecución la [Api Uber](git+https://github.com/Albert-16/Api_Uber.git)
+Tener en ejecución la [Api Uber](https://github.com/Albert-16/Api_Uber.git)
 si no la tiene la puede obtener del repositorio.
 
 luego tenemos que copiar el archivo configuracion.env y cambiar su nombre a .env 
