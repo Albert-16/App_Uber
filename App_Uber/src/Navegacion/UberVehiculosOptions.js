@@ -2,27 +2,10 @@ import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, FlatList, Image
 import React, { useEffect, useState } from 'react';
 import { Octicons, Ionicons, Fontisto, FontAwesome, Entypo } from '@expo/vector-icons';
 import {
-  StyledContainer,
-  InnerContainer,
   PageTitulo,
-  Subtitle,
-  StyledFormArea,
   StyledButton,
-  ButtonText,
   Line,
-  MenuContainer,
-  Avatar,
   Colors,
-  LeftIcon,
-  MenuImagen,
-  StyleScrollView,
-  PageLogo,
-  PageHomeLogo,
-  StyledButtonHome,
-  CenterIcon,
-  RightIcon,
-  Titulo,
-  Formik
 } from '../Componentes/style';
 
 import 'intl';
@@ -32,21 +15,14 @@ import tw from 'tailwind-react-native-classnames';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { IP, IMAGE, PORT, LISTARVEHICULOS } from '@env';
+import { IP, IMAGE, PORT, LISTARVEHICULOS,MetodoPago } from '@env';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const Ruta = "http://" + IP + ":" + PORT + IMAGE;
 const RutaListar = "http://" + IP + ":" + PORT + LISTARVEHICULOS;
+const RutaMetodoPago = "http://" + IP + ":" + PORT + MetodoPago + "id=" ;
 
 import { useSelector } from 'react-redux';
 import { selectedTravelTimeInformation,selectedOrigin,selectedDestination } from '../Slices/navSlice';
-
-
-
-
-
-
-
-
 
 
 const surgeChargeRate = 1.5;
@@ -60,6 +36,7 @@ const UberVehiculosOptions = () => {
   const travelTimeInformation = useSelector(selectedTravelTimeInformation);
   const origin = useSelector(selectedOrigin);
   const destination = useSelector(selectedDestination);
+  const [MetodoDePago,setMetodoDePago] = useState([]);
  
   useEffect(async () => {
     const token = await AsyncStorage.getItem('token');
@@ -81,17 +58,24 @@ const UberVehiculosOptions = () => {
       .catch(console.error)
       .finally(() => setIsLoading(false));
 
+      await fetch(RutaMetodoPago + cliente.id, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token
+        }
+      })
+        .then((res) => res.json()).then((resJson) => {
+          setMetodoDePago(resJson)
+        })
+        .catch(console.error)
 
   }, []);
 
 
-
-
-
   const ListaDatos = ListarVeh.Información;
   return (
-
-
 
     <SafeAreaView style={tw`flex-grow bg-black`}>
 
@@ -138,26 +122,37 @@ const UberVehiculosOptions = () => {
           )}
         />
 
-
-
-
-
-
         <View style={tw`mt-auto border-t border-gray-200`}>
           <StyledButton disabled={!selected} style={tw`rounded-full`}
-            onPress={() => {
-              const precio = travelTimeInformation?.distance?.value * surgeChargeRate * selected?.multiplier / 100; 
-                const DataViajes=[
-                  { 
-                    origen: origin,
-                    destino: destination,
-                    viaje: travelTimeInformation,
-                    Cliente: Cliente,
-                    Vehiculo: selected,
-                    total: precio,
+            onPress={async() => {
+              try {
+                
+                const precio = travelTimeInformation?.distance?.value * surgeChargeRate * selected?.multiplier / 100; 
+                  const DataViajes=[
+                    { 
+                      origen: origin,
+                      destino: destination,
+                      viaje: travelTimeInformation,
+                      Cliente: Cliente,
+                      Vehiculo: selected,
+                      total: precio,
+                    }
+                  ];
+                  const InformacionViaje = JSON.stringify(DataViajes);
+                  await AsyncStorage.setItem('DataViajes',InformacionViaje);
+                  if(MetodoDePago.Titulo == "Lista Vacía")
+                  {
+                    navigation.navigate("Pago");
                   }
-                ];
-                console.log(DataViajes);
+                  else
+                  {
+                    navigation.navigate("ConfirmarViaje");
+                  }
+                  //console.log(DataViajes);
+              } catch (error) {
+                console.log(error.toString());
+              }
+             
             }}
           >
             <Text style={tw`text-white text-center text-xl`}>Seleccionar {selected?.title}</Text>

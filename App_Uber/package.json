@@ -16,7 +16,7 @@
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/stack": "^6.1.1",
     "@reduxjs/toolkit": "^1.8.0",
-    "@stripe/stripe-react-native": "^0.4.0",
+    "@stripe/stripe-react-native": "0.2.3",
     "axios": "^0.26.1",
     "dotenv": "^16.0.0",
     "env-cmd": "^10.1.0",

@@ -1,34 +1,17 @@
 import React from 'react';
-import { FlatList, Image, Text, View, StyleSheet, TouchableOpacity } from 'react-native'
-import { Octicons, Ionicons, AntDesign } from '@expo/vector-icons';
-import { HOST } from '@env';
+import { FlatList, Image,  TouchableOpacity } from 'react-native'
+import {  AntDesign } from '@expo/vector-icons';
 import tw from 'tailwind-react-native-classnames';
 import {
-    StyledContainer,
-    InnerContainer,
-    PageTitulo,
-    Subtitle,
-    StyledFormArea,
-    StyledButton,
     ButtonText,
-    Line,
-    MenuContainer,
-    Avatar,
     Colors,
-    LeftIcon,
-    MenuImagen,
-    StyleScrollView,
-    PageLogo,
-    PageHomeLogo,
-    StyledButtonHome,
-    CenterIcon,
     RightIcon
 } from '../Componentes/style';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
-import { selectedDestination, selectedOrigin } from '../Slices/navSlice';
+import { selectedOrigin } from '../Slices/navSlice';
 const { color2, color6, color5 } = Colors;
-import { IP, IMAGE, PORT, LISTARVEHICULOS } from '@env'
+import { IP, IMAGE, PORT } from '@env'
 const Ruta = "http://" + IP + ":" + PORT + IMAGE;
 const data = [
     {

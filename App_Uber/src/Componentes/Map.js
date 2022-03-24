@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 import MapView, { Marker } from 'react-native-maps';
 import { useSelector } from 'react-redux';
@@ -48,8 +47,8 @@ const Map = () => {
             style={tw`flex-1`}
             mapType="mutedStandard"
             initialRegion={{
-                latitude: origin.location.lat,
-                longitude: origin.location.lng,
+                latitude: origin?.location?.lat,
+                longitude: origin?.location?.lng,
                 latitudeDelta: 0.005,
                 longitudeDelta: 0.005
             }}
@@ -57,8 +56,8 @@ const Map = () => {
 
             {origin && destination && (
                 <MapViewDirections
-                    origin={origin.description}
-                    destination={destination.description}
+                    origin={origin?.description}
+                    destination={destination?.description}
                     apikey={API_KEY}
                     strokeWidth={3}
                     strokeColor="black"
@@ -69,11 +68,11 @@ const Map = () => {
             {origin?.location && (
                 <Marker
                     coordinate={{
-                        latitude: origin.location.lat,
-                        longitude: origin.location.lng,
+                        latitude: origin?.location.lat,
+                        longitude: origin?.location.lng,
                     }}
                     title="Origen"
-                    description={origin.description}
+                    description={origin?.description}
                     identifier='origin'
                 />
             )}
@@ -81,11 +80,11 @@ const Map = () => {
             {destination?.location && (
                 <Marker
                     coordinate={{
-                        latitude: destination.location.lat,
-                        longitude: destination.location.lng,
+                        latitude: destination?.location?.lat,
+                        longitude: destination?.location?.lng,
                     }}
                     title="Destino"
-                    description={destination.description}
+                    description={destination?.description}
                     identifier='destination'
                 />
             )}

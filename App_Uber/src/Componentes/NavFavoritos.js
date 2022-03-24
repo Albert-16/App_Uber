@@ -17,33 +17,11 @@ const data = [
     }
 ];
 
-import {
-    StyledContainer,
-    InnerContainer,
-    PageTitulo,
-    Subtitle,
-    StyledFormArea,
-    StyledButton,
-    ButtonText,
-    Colors,
-    Line,
-    MenuContainer,
-    Avatar,
-    MenuImagen,
-    StyleScrollView,
-    PageLogo,
-    PageHomeLogo,
-    StyledButtonHome,
-    CenterIcon,
-    Titulo,
-    Subtitulo,
-    StyledButtonFav,
-    LeftIcon
-} from '../Componentes/style';
+import {Colors} from '../Componentes/style';
 const {color5,color6,color2} = Colors;
-import {Icon} from 'react-native-elements';
+
 import tw from 'tailwind-react-native-classnames';
-import { Octicons, Ionicons,AntDesign } from '@expo/vector-icons';
+import {  Ionicons, } from '@expo/vector-icons';
 const NavFavoritos = () => {
   return (
     <FlatList data={data}   

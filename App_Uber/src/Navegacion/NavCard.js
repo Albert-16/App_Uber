@@ -2,24 +2,8 @@ import React from "react";
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import {
-    StyledContainer,
-    InnerContainer,
     PageTitulo,
-    Subtitle,
-    StyledFormArea,
-    StyledButton,
-    ButtonText,
     Colors,
-    Line,
-    MenuContainer,
-    Avatar,
-    MenuImagen,
-    StyleScrollView,
-    PageLogo,
-    PageHomeLogo,
-    LeftIcon,
-    StyledButtonHome,
-    StyledButtonFav
 } from '../Componentes/style';
 
 import tw from 'tailwind-react-native-classnames';
@@ -30,7 +14,7 @@ import { useDispatch } from 'react-redux';
 import { setDestination, setOrigin } from '../Slices/navSlice';
 import { useNavigation } from '@react-navigation/native';
 import NavFavoritos from "../Componentes/NavFavoritos";
-import { Octicons, Ionicons, Fontisto } from '@expo/vector-icons';
+import { Fontisto } from '@expo/vector-icons';
 
 const NavigatorCard = () => {
     

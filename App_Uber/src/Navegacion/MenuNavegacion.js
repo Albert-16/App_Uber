@@ -4,18 +4,15 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Login from './../Vistas/login';
 import RegistroUsuario from './../Vistas/RegistrarUsuarios';
 import Bienvenida from './../Vistas/Menu';
-import Vehiculos from "./../Vistas/Vehiculos";
-import Viajes from './../Vistas/viewViajes';
-import Marcas from './../Vistas/viewMarcas';
-import Modelos from './../Vistas/viewModelos';
-import Ciudades from './../Vistas/viewCiudades.js'
 import RecuperarCuenta from './../Vistas/RecuperarCuenta';
 import RestablecerContraseña from './../Vistas/RestablecerContraseña';
 import MenuPrincipal from './../Vistas/MenuPrincipal';
 import MapViewViajes from './../Vistas/MapView';
 import MiPerfil from './../Vistas/MiPerfil';
 import { Colors } from './../Componentes/style';
+import TarjetaCredito from './../Vistas/TarjetaCredito';
 import "react-native-gesture-handler";
+import ConfirmarViaje from '../Vistas/ConfirmarViaje';
 const { color5, color6, color1, color2 } = Colors;
 
 const Stack = createStackNavigator();
@@ -45,6 +42,18 @@ const MenuNavegacion = () => {
                     }}
                 />
 
+                <Stack.Screen name="Pago" component={TarjetaCredito}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+                <Stack.Screen name="ConfirmarViaje" component={ConfirmarViaje}
+                    options={{
+                        title: ""
+                    }}
+                />
+
                 <Stack.Screen name="Perfil" component={MiPerfil}
                     options={{
                         title: ""
@@ -65,31 +74,7 @@ const MenuNavegacion = () => {
                         title: ""
                     }}
                 />
-                <Stack.Screen name="Viajes" component={Viajes}
-                    options={{
-                        title: ""
-                    }}
-                />
-                <Stack.Screen name="Vehículos" component={Vehiculos}
-                    options={{
-                        title: ""
-                    }}
-                />
-                <Stack.Screen name="Marcas" component={Marcas}
-                    options={{
-                        title: ""
-                    }}
-                />
-                <Stack.Screen name="Modelos" component={Modelos}
-                    options={{
-                        title: ""
-                    }}
-                />
-                <Stack.Screen name="Ciudades" component={Ciudades}
-                    options={{
-                        title: ""
-                    }}
-                />
+               
                 <Stack.Screen name="Recuperar Cuenta" component={RecuperarCuenta}
                     options={{
                         title: ""

@@ -11,9 +11,7 @@ import { CardField, useConfirmPayment } from "@stripe/stripe-react-native";
 import {
   StyledContainer,
   InnerContainer,
-  PageLogo,
   PageTitulo,
-  Subtitle,
   StyledFormArea,
   LeftIcon,
   StyledInputLabel,
@@ -22,18 +20,19 @@ import {
   Colors,
   StyledButton,
   ButtonText,
-  MsgBox,
   Line,
-  ExtraView,
-  ExtraText,
-  TextLink,
-  TextLinkContent,
   StyledScroll
 } from '../Componentes/style';
 
 const { color2, color6, color5 } = Colors;
 
 import { IP, TarjetaCredito, PORT } from '@env';
+
+const ListaMetodoPagos = [
+  { id: 1, descripcion: 'Tarjeta de credito'},
+  { id: 3, descripcion: 'Efectivo'}
+]
+
 
 const RegistrarUsuario = ({ navigation }) => {
   const [titular, setTitular] = useState(null);
@@ -77,27 +76,39 @@ const RegistrarUsuario = ({ navigation }) => {
                   fecha_Vencimiento: cardDetails?.expiryMonth + "/" + cardDetails?.expiryYear,
                 }];
                 console.log(DataTarjeta);
-               const respuesta = await fetch(Ruta + cliente.id, {
-                 method: 'POST',
-                 headers: {
-                   Accept: 'application/json',
-                   'Content-Type': 'application/json',
-                   Authorization: 'Bearer ' + token
-                 },
-                 body: JSON.stringify({
-                  titular_Tarjeta: values.titular,
-                  correo_Electronico: values.correo,
-                  CVC: cardDetails?.last4,
-                  numeroTarjeta: "XXXXXXXXXXXX" + cardDetails?.last4,
-                  id_Usuarios: cliente?.id,
-                  estado: true,
-                  fecha_Vencimiento: cardDetails?.expiryMonth + "/" + cardDetails?.expiryYear,
-                })
-               });
-               
-               const json = await respuesta.json();
+                const respuesta = await fetch(Ruta + cliente.id, {
+                  method: 'POST',
+                  headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + token
+                  },
+                  body: JSON.stringify({
+                    titular_Tarjeta: values.titular,
+                    correo_Electronico: values.correo,
+                    CVC: cardDetails?.last4,
+                    numeroTarjeta: "XXXXXXXXXXXX" + cardDetails?.last4,
+                    id_Usuarios: cliente?.id,
+                    estado: true,
+                    fecha_Vencimiento: cardDetails?.expiryMonth + "/" + cardDetails?.expiryYear,
+                  })
+                });
+
+                const json = await respuesta.json();
                 console.log(json);
                 Alert.alert("Aviso", json.Mensaje);
+
+                if (json.Titulo == "Registro Guardado") {
+                  console.log(ListaMetodoPagos[1]);
+                  const tipo = JSON.stringify(ListaMetodoPagos[0]);
+                  await AsyncStorage.setItem('Tipo', tipo);
+                    navigation.navigate("ConfirmarViaje");
+                }
+                else
+                {
+                  navigation.navigate("Menú Principal");
+                }
+                
                 // console.log(cardNumber);
 
               } catch (error) {
@@ -149,8 +160,18 @@ const RegistrarUsuario = ({ navigation }) => {
                 />
 
                 <Line />
-                <StyledButton btn2={true} onPress={handleSubmit}>
+                <StyledButton onPress={handleSubmit}>
                   <ButtonText btn2={true} >Asociar</ButtonText>
+                </StyledButton>
+                <Line />
+
+                <StyledButton btn2={true} onPress={async() => {
+                    //console.log(ListaMetodoPagos[1]);
+                    const tipo = JSON.stringify(ListaMetodoPagos[1]);
+                    await AsyncStorage.setItem('Tipo', tipo);
+                    navigation.navigate("ConfirmarViaje");
+                 }}>
+                  <ButtonText btn2={true} >Pagar con Efectivo</ButtonText>
                 </StyledButton>
                 <Line />
 

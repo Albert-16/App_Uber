@@ -4,7 +4,7 @@ import { Octicons, Ionicons } from '@expo/vector-icons';
 import { Formik } from 'formik';
 import { Alert, SectionList, View } from 'react-native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { InfoApi } from "../Configuracion/configuracion";
+
 
 import {
     StyledContainer,
@@ -31,7 +31,7 @@ import {
 
 const { color2, color6, color5 } = Colors;
 
-const { IP, NEWUSER, PORT } = InfoApi;
+import { IP, NEWUSER, PORT } from '@env';
 
 const RegistrarUsuario = ({navigation}) => {
     const [hidePassword, setHidePassword] = useState(true);
@@ -49,8 +49,6 @@ const RegistrarUsuario = ({navigation}) => {
                 <InnerContainer>
 
                     <PageTitulo>Registro de Usuarios</PageTitulo>
-
-
                     <Formik
                         initialValues={
                             {

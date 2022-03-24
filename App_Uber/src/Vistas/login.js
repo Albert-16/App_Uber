@@ -4,7 +4,7 @@ import { Octicons, Ionicons } from '@expo/vector-icons';
 import { Formik } from 'formik';
 import { Alert, View } from 'react-native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { InfoApi } from "../Configuracion/configuracion";
+
 
 import {
     StyledContainer,
@@ -73,10 +73,8 @@ const Login = ({ navigation }) => {
                                 else {
                                     const token = data.token;
                                     await AsyncStorage.setItem('token', token);
-                                    const dataUsuario = JSON.stringify(data.Usuario)
+                                    const dataUsuario = JSON.stringify(data.Usuario);
                                     await AsyncStorage.setItem('Cliente', dataUsuario);
-                                    const token2 = await AsyncStorage.getItem('token');
-                                    console.log("Token:", token2);
                                     navigation.navigate("Inicio");
                                 }
                                 //console.log(data.token);

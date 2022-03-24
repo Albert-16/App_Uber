@@ -3,8 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Octicons, Ionicons } from '@expo/vector-icons';
 import { Formik } from 'formik';
 import { Alert, View } from 'react-native';
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { InfoApi } from "../Configuracion/configuracion";
+
 
 import {
     StyledContainer,
@@ -31,7 +30,7 @@ import {
 
 const { color2, color6, color5 } = Colors;
 
-const { IP, RESTABLECERCONTRA, PORT } = InfoApi;
+import { IP, RESTABLECERCONTRA, PORT } from '@env';
 
 
 
