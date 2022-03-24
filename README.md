@@ -1,33 +1,36 @@
 # Proyecto Aplicación de Uber
 
-Este proyecto se encarga del manejo de viajes para distintas zonas de la ciudad cuenta con un manejo de Clientes,Conductores y Vehículos.
+Este proyecto se encarga del manejo de viajes para distintas lugares.
 
 ## Comenzando 🚀
 
-Descargar la Rama de Main y entrar a la terminal en la ruta de la carpeta del proyecto y asegurarse de tener instalado node js y npm instalados en su ordenador, Luego ejecutar el comando npm install para actualizar los paquetes del proyecto.
+Descargar la rama de main y entrar a la terminal en la ruta de la carpeta del proyecto y asegurarse de tener instalado node js y npm instalados en su ordenador, luego utilizar el comando cd App_Uber para acceder.
 
 ### Pre-requisitos 📋
 
-Tener en ejecución la [Api Uber](https://github.com/Albert-16/Api_Uber.git)
-si no la tiene la puede obtener del repositorio.
+Tener en ejecución la Api Uber.
+Si no la tiene la puede obtener del repositorio: [Api_Uber](https://github.com/Albert-16/Api_Uber.git) 
 
-luego tenemos que copiar el archivo configuracion.env y cambiar su nombre a .env 
-luego configuramos las variables siguientes:
-* IP= Dirección ip de la red de la api
-* PORT= Puerto que esta utilizando la api
-* API_KEY = [Api key generada en Google cloud Platform](https://cloud.google.com/?hl=es)
+Luego tenemos que copiar el archivo Configuracion.env y cambiar su nombre a .env 
+luego configuramos las siguientes variables:
 
-se debe crear un proyecto en google cloud platform y habilitar las api's que se muestran a continuación.
+* IP= Dirección ip de la red donde esta funcionando la api, no usar localhost
+* PORT= Puerto que esta utilizando la api, puerto por defecto (4005)
+* API_KEY = [Api key generada en google cloud platform](https://cloud.google.com/?hl=es)
 
-Nota: Para usar la api se necesita activar 3 Api de Google Cloud Platform:
-* Places API
-* Directions API
-* Distance Matrix API
+Se debe crear un proyecto en google cloud platform y habilitar las api's que se muestran a continuación.
 
-para que las apis funcionen debe tener su cuenta vinculada a un método de facturación
+Nota: Para usar la Aplicación de Uber se necesitan activar 3 Api's de Google Cloud Platform:
 
-Luego de habilitar las api's
-* npm install - este comando actualizara los paquete que usa nuestra aplicación.
+* Places API: Autocompletado de las direcciones.
+* Directions API: Obtener las direcciones y para fijar un marcador en el mapa.
+* Distance Matrix API: Obtener la distancia y el tiempo entre las 2 direcciones.
+
+Nota: Para que las api's funcionen debe tener su cuenta vinculada a un método de facturación.
+
+Luego de habilitar las api's:
+
+* npm install - este comando actualizará los paquete que usa nuestra aplicación.
 * expo start - para ejecutar la app
 
 ## Construido con 🛠️
