@@ -13,6 +13,7 @@ import { Colors } from './../Componentes/style';
 import TarjetaCredito from './../Vistas/TarjetaCredito';
 import "react-native-gesture-handler";
 import ConfirmarViaje from '../Vistas/ConfirmarViaje';
+import EditarPerfil from '../Vistas/EditarPerfil';
 const { color5, color6, color1, color2 } = Colors;
 
 const Stack = createStackNavigator();
@@ -74,7 +75,13 @@ const MenuNavegacion = () => {
                         title: ""
                     }}
                 />
-               
+
+                <Stack.Screen name="EditarPerfil" component={EditarPerfil}
+                    options={{
+                        title: ""
+                    }}
+                />
+
                 <Stack.Screen name="Recuperar Cuenta" component={RecuperarCuenta}
                     options={{
                         title: ""

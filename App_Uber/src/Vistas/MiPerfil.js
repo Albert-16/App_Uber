@@ -101,7 +101,7 @@ const ProfileScreen = () => {
       </View>
 
       <View style={styles.menuWrapper}>
-        <TouchableRipple onPress={() => { }}>
+        <TouchableRipple onPress={() => { navigation.navigate("EditarPerfil") }}>
           <View style={styles.menuItem}>
             <Icon name="rotate-left" color={color6} size={25} />
             <Text style={styles.menuItemText}>Editar Perfil</Text>
